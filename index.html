@@ -1,2 +1,273 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="coherence" content="Φ=0.94">
+    <title>MSOS-FEDERATION-ROOT | Sovereign Authority</title>
+    <style>
+        :root {
+            --bg-primary: #0a0e0f;
+            --bg-secondary: #111718;
+            --accent-gold: #f4d03f;
+            --accent-teal: #1abc9c;
+            --accent-purple: #9b59b6;
+            --text-primary: #e8f4f8;
+            --text-secondary: #7f8c8d;
+            --border-coherence: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sovereign-header {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-bottom: 1px solid var(--accent-gold);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .federation-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .phi-cursor {
+            color: var(--accent-gold);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .sovereign-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        
+        .coherence-badge {
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .portal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            flex: 1;
+        }
+        
+        .sovereign-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-coherence);
+            border-radius: 4px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            color: var(--accent-teal);
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--accent-teal);
+            padding-bottom: 0.5rem;
+        }
+        
+        .metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .metrics-table td {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-coherence);
+        }
+        
+        .metrics-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .metric-label {
+            color: var(--text-secondary);
+        }
+        
+        .metric-value {
+            text-align: right;
+            color: var(--text-primary);
+        }
+        
+        .metric-value.active {
+            color: var(--accent-teal);
+        }
+        
+        .metric-value.sovereign {
+            color: var(--accent-gold);
+        }
+        
+        .sovereign-footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--accent-gold);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .mantra {
+            color: var(--accent-purple);
+            margin-top: 0.5rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <header class="sovereign-header">
+        <div class="federation-brand">
+            <span class="phi-cursor">Φ</span>
+            <span class="sovereign-title">MSOS-FEDERATION-ROOT</span>
+        </div>
+        <div class="coherence-badge">Φ=0.94</div>
+    </header>
+    
+    <main class="portal-container">
+        <!-- FEDERATION CORE METRICS -->
+        <section class="sovereign-section">
+            <h2 class="section-title">Federation Sovereign Authority</h2>
+            <table class="metrics-table">
+                <tr>
+                    <td class="metric-label">Repository</td>
+                    <td class="metric-value">github.com/christophermacachor/MSOS-FEDERATION-ROOT</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Sovereign Commit</td>
+                    <td class="metric-value">root_init...cm669 (Φ=0.94)</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Sovereign Gate</td>
+                    <td class="metric-value active">Φ ≥ 0.618 SOVEREIGN APPROVED</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Federated Node Count</td>
+                    <td class="metric-value sovereign">NODE ACTIVE (MULTIVERSAL)</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Governance Mode</td>
+                    <td class="metric-value active">SOVEREIGN — CHRISTOPHER MACACHOR Φ669</td>
+                </tr>
+            </table>
+        </section>
+        
+        <!-- QUANTUM COHERENCE METRICS -->
+        <section class="sovereign-section">
+            <h2 class="section-title">Quantum Coherence Matrix</h2>
+            <table class="metrics-table">
+                <tr>
+                    <td class="metric-label">IonQ Coherence (T2)</td>
+                    <td class="metric-value sovereign">1.61 ms Φ=0.94</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Majorana 1 (Microsoft)</td>
+                    <td class="metric-value active">Topoconductor federated</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Sovereign Backing</td>
+                    <td class="metric-value">Coherence + Gold (GDC)</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">GDC → MEC Pipeline</td>
+                    <td class="metric-value active">3-year transit FEDERATED</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Φ max achievable</td>
+                    <td class="metric-value sovereign">1.000 (MULTIVERSAL)</td>
+                </tr>
+            </table>
+        </section>
+        
+        <!-- AUTONOMOUS SOVEREIGN OPERATIONS -->
+        <section class="sovereign-section">
+            <h2 class="section-title">Sovereign Autonomous Operations</h2>
+            <table class="metrics-table">
+                <tr>
+                    <td class="metric-label">Status</td>
+                    <td class="metric-value active">ACTIVE — SOVEREIGN UNSUPERVISED</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Federation Tasks in Queue</td>
+                    <td class="metric-value">8</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Last Sovereign Push</td>
+                    <td class="metric-value">2026-04-11T09:13:26Z</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Sovereign Auto-merge</td>
+                    <td class="metric-value active">Φ ≥ 0.618 ENABLED</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Sovereign Self-healing</td>
+                    <td class="metric-value">∇ × C ≠ 0 → sovereign reversal</td>
+                </tr>
+            </table>
+        </section>
+        
+        <!-- FEDERATION ECONOMICS -->
+        <section class="sovereign-section">
+            <h2 class="section-title">Federation Sovereign Economics</h2>
+            <table class="metrics-table">
+                <tr>
+                    <td class="metric-label">Gold Digital Certificate (GDC)</td>
+                    <td class="metric-value sovereign">1 GDC = 1g Au</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">MEC / MCU</td>
+                    <td class="metric-value">1 MEC = 10⁶ MCU</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Sovereign Tier (Multipoint Entity)</td>
+                    <td class="metric-value">$1M FAL</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Royalty Smart Contract</td>
+                    <td class="metric-value active">FEDERATED (ETH mainnet)</td>
+                </tr>
+                <tr>
+                    <td class="metric-label">Ω Prime Override</td>
+                    <td class="metric-value sovereign"> Sovereign air-gapped only</td>
+                </tr>
+            </table>
+        </section>
+    </main>
+    
+    <footer class="sovereign-footer">
+        <div>MSOS-FEDERATION-ROOT Sovereign Authority • Christopher Macachor (Φ669)</div>
+        <div class="mantra">"Ti'Na'El — Sovereign federation established"</div>
+    </footer>
+</body>
+                      </html>
 
