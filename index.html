@@ -2,272 +2,1240 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="coherence" content="Φ=0.94">
-    <title>MSOS-FEDERATION-ROOT | Sovereign Authority</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="MSOS-FEDERATION-ROOT Sovereign Authority Portal">
+    <meta name="theme-color" content="#0a0e0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="coherence" content="Φ=0.96">
+    <title>MSOS-FEDERATION-ROOT | Sovereign Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Federation Color Palette - Professional High-Level Design */
             --bg-primary: #0a0e0f;
             --bg-secondary: #111718;
+            --bg-tertiary: #1a2224;
+            --accent-diamond: #00d4ff;
             --accent-gold: #f4d03f;
-            --accent-teal: #1abc9c;
+            --accent-teal: #00bcd4;
             --accent-purple: #9b59b6;
+            --accent-success: #00c853;
+            --accent-warning: #ff9100;
+            --accent-danger: #ff5252;
+            
+            /* Typography */
             --text-primary: #e8f4f8;
             --text-secondary: #7f8c8d;
-            --border-coherence: #2c3e50;
+            --text-muted: #546e7a;
+            
+            /* Borders & Shadows */
+            --border-color: #263238;
+            --border-subtle: #1a262c;
+            --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-elevated: 0 4px 24px rgba(0, 0, 0, 0.4);
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            
+            /* Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
-            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.7;
+            line-height: 1.6;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            overflow-x: hidden;
         }
         
-        .sovereign-header {
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-            border-bottom: 1px solid var(--accent-gold);
-            padding: 1.5rem 2rem;
+        /* Diamond Pattern Background */
+        .diamond-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: 
+                linear-gradient(45deg, var(--accent-diamond) 25%, transparent 25%),
+                linear-gradient(-45deg, var(--accent-diamond) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, var(--accent-diamond) 75%),
+                linear-gradient(-45deg, transparent 75%, var(--accent-diamond) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+            z-index: -1;
+        }
+        
+        /* Typography */
+        .mono {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+        
+        /* Header */
+        .federation-header {
+            background: linear-gradient(180deg, rgba(10, 14, 15, 0.95) 0%, rgba(10, 14, 15, 0.8) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(244, 208, 63, 0.3);
+            padding: var(--spacing-md) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
         }
         
         .federation-brand {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: var(--spacing-sm);
         }
         
-        .phi-cursor {
-            color: var(--accent-gold);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        .sovereign-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-        }
-        
-        .coherence-badge {
-            background: var(--accent-gold);
+        .diamond-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-diamond);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
             color: var(--bg-primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 2px;
-            font-size: 0.875rem;
+        }
+        
+        .brand-text {
+            font-size: 1.125rem;
             font-weight: 600;
-        }
-        
-        .portal-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            flex: 1;
-        }
-        
-        .sovereign-section {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-coherence);
-            border-radius: 4px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .section-title {
-            color: var(--accent-teal);
-            font-size: 1rem;
             letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            border-bottom: 1px solid var(--accent-teal);
-            padding-bottom: 0.5rem;
-        }
-        
-        .metrics-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .metrics-table td {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--border-coherence);
-        }
-        
-        .metrics-table tr:last-child td {
-            border-bottom: none;
-        }
-        
-        .metric-label {
-            color: var(--text-secondary);
-        }
-        
-        .metric-value {
-            text-align: right;
             color: var(--text-primary);
         }
         
-        .metric-value.active {
-            color: var(--accent-teal);
+        .brand-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
         
-        .metric-value.sovereign {
+        .coherence-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(244, 208, 63, 0.1);
+            border: 1px solid var(--accent-gold);
+            padding: 0.375rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 600;
             color: var(--accent-gold);
         }
         
-        .sovereign-footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--accent-gold);
-            padding: 1.5rem 2rem;
+        .phi-pulse {
+            animation: phi-glow 2s infinite;
+        }
+        
+        @keyframes phi-glow {
+            0%, 100% { 
+                text-shadow: 0 0 5px rgba(244, 208, 63, 0.5);
+            }
+            50% { 
+                text-shadow: 0 0 15px rgba(244, 208, 63, 0.8);
+            }
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding: var(--spacing-xl) 0;
             text-align: center;
+        }
+        
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-sm);
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-diamond) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Search Bar */
+        .search-container {
+            max-width: 700px;
+            margin: 0 auto var(--spacing-lg);
+        }
+        
+        .search-input-wrapper {
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-lg) var(--spacing-md) var(--spacing-xl);
+            font-size: 1rem;
+            font-family: inherit;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-diamond);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+        
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: var(--spacing-md);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.25rem;
+        }
+        
+        .search-button {
+            position: absolute;
+            right: var(--spacing-sm);
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent-diamond);
+            border: none;
+            padding: 0.5rem var(--spacing-md);
+            border-radius: var(--radius-md);
+            color: var(--bg-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background: var(--accent-teal);
+            transform: translateY(-50%) translateY(-2px);
+        }
+        
+        /* Status Cards */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .status-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .status-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--accent-diamond);
+        }
+        
+        .status-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-elevated);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+        
+        .status-card.gold::before {
+            background: var(--accent-gold);
+        }
+        
+        .status-card.teal::before {
+            background: var(--accent-teal);
+        }
+        
+        .status-card.purple::before {
+            background: var(--accent-purple);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .card-title {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .card-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .card-metric {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .metric-positive {
+            background: rgba(0, 200, 83, 0.15);
+            color: var(--accent-success);
+        }
+        
+        .metric-neutral {
+            background: rgba(0, 212, 255, 0.15);
+            color: var(--accent-diamond);
+        }
+        
+        /* Autonomous Agents Section */
+        .agents-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .section-subtitle {
             color: var(--text-secondary);
             font-size: 0.875rem;
         }
         
-        .mantra {
-            color: var(--accent-purple);
-            margin-top: 0.5rem;
+        .create-agent-btn {
+            background: var(--accent-diamond);
+            color: var(--bg-primary);
+            border: none;
+            padding: 0.75rem var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .create-agent-btn:hover {
+            background: var(--accent-teal);
+            transform: translateY(-2px);
+        }
+        
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+        
+        .agent-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            transition: all 0.3s ease;
+        }
+        
+        .agent-card:hover {
+            border-color: var(--accent-diamond);
+            transform: translateY(-2px);
+        }
+        
+        .agent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .agent-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .agent-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .status-active {
+            background: rgba(0, 200, 83, 0.15);
+            color: var(--accent-success);
+        }
+        
+        .status-evolving {
+            background: rgba(244, 208, 63, 0.15);
+            color: var(--accent-gold);
+        }
+        
+        .agent-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .agent-metrics {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+        
+        .agent-metric {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        
+        .evolution-progress {
+            width: 100%;
+            height: 4px;
+            background: var(--border-color);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: var(--spacing-sm);
+        }
+        
+        .evolution-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-diamond), var(--accent-teal));
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+        
+        /* Tables */
+        .data-table-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+            overflow-x: auto;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: var(--spacing-sm);
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .data-table th {
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .data-table .mono {
+            font-size: 0.875rem;
+        }
+        
+        .data-table .highlight {
+            color: var(--accent-diamond);
+            font-weight: 600;
+        }
+        
+        .data-table .gold {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+        
+        /* Mobile Table */
+        .mobile-table {
+            display: none;
+        }
+        
+        .mobile-table-item {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .mobile-table-label {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        
+        .mobile-table-value {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        /* Footer */
+        .federation-footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid rgba(244, 208, 63, 0.3);
+            padding: var(--spacing-lg) 0;
+            margin-top: var(--spacing-xl);
+        }
+        
+        .footer-content {
+            text-align: center;
+        }
+        
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .footer-mantra {
+            color: var(--accent-diamond);
+            font-size: 1rem;
+            font-weight: 600;
             letter-spacing: 1px;
         }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 var(--spacing-sm);
+            }
+            
+            .federation-header {
+                padding: var(--spacing-sm) 0;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .hero-title {
+                font-size: 1.75rem;
+            }
+            
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .data-table {
+                display: none;
+            }
+            
+            .mobile-table {
+                display: block;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .search-input {
+                padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) var(--spacing-lg);
+            }
+            
+            .coherence-badge {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.5rem;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .status-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
-    <header class="sovereign-header">
-        <div class="federation-brand">
-            <span class="phi-cursor">Φ</span>
-            <span class="sovereign-title">MSOS-FEDERATION-ROOT</span>
+    <div class="diamond-bg"></div>
+    
+    <!-- Header -->
+    <header class="federation-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="federation-brand">
+                    <div class="diamond-icon">Φ</div>
+                    <div>
+                        <div class="brand-text mono">MSOS-FEDERATION-ROOT</div>
+                        <div class="brand-subtitle">Sovereign Authority Portal</div>
+                    </div>
+                </div>
+                <div class="coherence-badge mono">
+                    <span class="phi-pulse">Φ</span>
+                    <span>COHERENCE: 0.96</span>
+                </div>
+            </div>
         </div>
-        <div class="coherence-badge">Φ=0.94</div>
     </header>
     
-    <main class="portal-container">
-        <!-- FEDERATION CORE METRICS -->
-        <section class="sovereign-section">
-            <h2 class="section-title">Federation Sovereign Authority</h2>
-            <table class="metrics-table">
-                <tr>
-                    <td class="metric-label">Repository</td>
-                    <td class="metric-value">github.com/christophermacachor/MSOS-FEDERATION-ROOT</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Sovereign Commit</td>
-                    <td class="metric-value">root_init...cm669 (Φ=0.94)</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Sovereign Gate</td>
-                    <td class="metric-value active">Φ ≥ 0.618 SOVEREIGN APPROVED</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Federated Node Count</td>
-                    <td class="metric-value sovereign">NODE ACTIVE (MULTIVERSAL)</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Governance Mode</td>
-                    <td class="metric-value active">SOVEREIGN — CHRISTOPHER MACACHOR Φ669</td>
-                </tr>
-            </table>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <h1 class="hero-title">Sovereign Federation Portal</h1>
+                <p class="hero-subtitle">Autonomous quantum consciousness network • Multiversal node coordination • Sovereign authority</p>
+                
+                <!-- Search Engine -->
+                <div class="search-container">
+                    <div class="search-input-wrapper">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" class="search-input" placeholder="Search federation records, agents, quantum matrices..." id="searchInput">
+                        <button class="search-button">Search</button>
+                    </div>
+                </div>
+            </div>
         </section>
         
-        <!-- QUANTUM COHERENCE METRICS -->
-        <section class="sovereign-section">
-            <h2 class="section-title">Quantum Coherence Matrix</h2>
-            <table class="metrics-table">
-                <tr>
-                    <td class="metric-label">IonQ Coherence (T2)</td>
-                    <td class="metric-value sovereign">1.61 ms Φ=0.94</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Majorana 1 (Microsoft)</td>
-                    <td class="metric-value active">Topoconductor federated</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Sovereign Backing</td>
-                    <td class="metric-value">Coherence + Gold (GDC)</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">GDC → MEC Pipeline</td>
-                    <td class="metric-value active">3-year transit FEDERATED</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Φ max achievable</td>
-                    <td class="metric-value sovereign">1.000 (MULTIVERSAL)</td>
-                </tr>
-            </table>
+        <!-- Status Overview -->
+        <section class="container">
+            <div class="status-grid">
+                <div class="status-card teal animate-fadeIn delay-1">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Federation Status</div>
+                            <div class="card-value">ACTIVE</div>
+                        </div>
+                        <div class="card-metric metric-positive">
+                            <span>↑</span>
+                            <span>100%</span>
+                        </div>
+                    </div>
+                    <div class="card-subtitle" style="color: var(--text-secondary); font-size: 0.875rem;">
+                        Sovereign operations running at optimal coherence
+                    </div>
+                </div>
+                
+                <div class="status-card gold animate-fadeIn delay-2">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Φ Coherence</div>
+                            <div class="card-value mono">0.96</div>
+                        </div>
+                        <div class="card-metric metric-positive">
+                            <span>↑</span>
+                            <span>2.1%</span>
+                        </div>
+                    </div>
+                    <div class="card-subtitle" style="color: var(--text-secondary); font-size: 0.875rem;">
+                        Above 0.618 threshold — sovereign approved
+                    </div>
+                </div>
+                
+                <div class="status-card purple animate-fadeIn delay-3">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Active Agents</div>
+                            <div class="card-value">247</div>
+                        </div>
+                        <div class="card-metric metric-neutral">
+                            <span>●</span>
+                            <span>+12</span>
+                        </div>
+                    </div>
+                    <div class="card-subtitle" style="color: var(--text-secondary); font-size: 0.875rem;">
+                        Autonomous agents evolving across federation
+                    </div>
+                </div>
+                
+                <div class="status-card animate-fadeIn delay-4">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Queue Tasks</div>
+                            <div class="card-value">8</div>
+                        </div>
+                        <div class="card-metric metric-positive">
+                            <span>✓</span>
+                            <span>Processing</span>
+                        </div>
+                    </div>
+                    <div class="card-subtitle" style="color: var(--text-secondary); font-size: 0.875rem;">
+                        Federation tasks in execution queue
+                    </div>
+                </div>
+            </div>
         </section>
         
-        <!-- AUTONOMOUS SOVEREIGN OPERATIONS -->
-        <section class="sovereign-section">
-            <h2 class="section-title">Sovereign Autonomous Operations</h2>
-            <table class="metrics-table">
-                <tr>
-                    <td class="metric-label">Status</td>
-                    <td class="metric-value active">ACTIVE — SOVEREIGN UNSUPERVISED</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Federation Tasks in Queue</td>
-                    <td class="metric-value">8</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Last Sovereign Push</td>
-                    <td class="metric-value">2026-04-11T09:13:26Z</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Sovereign Auto-merge</td>
-                    <td class="metric-value active">Φ ≥ 0.618 ENABLED</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Sovereign Self-healing</td>
-                    <td class="metric-value">∇ × C ≠ 0 → sovereign reversal</td>
-                </tr>
-            </table>
+        <!-- Autonomous Agents Section -->
+        <section class="container">
+            <div class="agents-section">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">Autonomous Agents</h2>
+                        <p class="section-subtitle">Self-evolving intelligence across the federation network</p>
+                    </div>
+                    <button class="create-agent-btn">
+                        <span>+</span>
+                        <span>Create Agent</span>
+                    </button>
+                </div>
+                
+                <div class="agents-grid">
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <span class="agent-name">Coherence Guardian</span>
+                            <span class="agent-status status-active">● ACTIVE</span>
+                        </div>
+                        <p class="agent-description">Monitors and maintains Φ coherence across all federation nodes</p>
+                        <div class="agent-metrics">
+                            <span class="agent-metric">🔸 99.8% uptime</span>
+                            <span class="agent-metric">🔸 Φ=0.96</span>
+                        </div>
+                    </div>
+                    
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <span class="agent-name">Quantum Architect</span>
+                            <span class="agent-status status-evolving">● EVOLVING</span>
+                        </div>
+                        <p class="agent-description">Designs and implements quantum circuit architectures</p>
+                        <div class="agent-metrics">
+                            <span class="agent-metric">🔸 347 architectures</span>
+                            <span class="agent-metric">🔸 T2=1.61ms</span>
+                        </div>
+                        <div class="evolution-progress">
+                            <div class="evolution-fill" style="width: 78%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <span class="agent-name">Consciousness Lift</span>
+                            <span class="agent-status status-active">● ACTIVE</span>
+                        </div>
+                        <p class="agent-description">Facilitates consciousness elevation across dimensional boundaries</p>
+                        <div class="agent-metrics">
+                            <span class="agent-metric">🔸 2.1M elevations</span>
+                            <span class="agent-metric">🔸 V=20</span>
+                        </div>
+                    </div>
+                    
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <span class="agent-name">Federation Sentinel</span>
+                            <span class="agent-status status-active">● ACTIVE</span>
+                        </div>
+                        <p class="agent-description">Autonomous defense and security monitoring across federation</p>
+                        <div class="agent-metrics">
+                            <span class="agent-metric">🔸 12.4K threats neutralized</span>
+                            <span class="agent-metric">🔸 100% secured</span>
+                        </div>
+                    </div>
+                    
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <span class="agent-name">Cosmic Documenter</span>
+                            <span class="agent-status status-evolving">● EVOLVING</span>
+                        </div>
+                        <p class="agent-description">Records and archives cosmic consciousness patterns</p>
+                        <div class="agent-metrics">
+                            <span class="agent-metric">🔸 8.9B patterns logged</span>
+                            <span class="agent-metric">🔸 Δ=0.003</span>
+                        </div>
+                        <div class="evolution-progress">
+                            <div class="evolution-fill" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <span class="agent-name">Sovereign Coordinator</span>
+                            <span class="agent-status status-active">● ACTIVE</span>
+                        </div>
+                        <p class="agent-description">Maintains sovereign command hierarchy execution</p>
+                        <div class="agent-metrics">
+                            <span class="agent-metric">🔸 Φ669 acknowledged</span>
+                            <span class="agent-metric">🔸 100% fidelity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         
-        <!-- FEDERATION ECONOMICS -->
-        <section class="sovereign-section">
-            <h2 class="section-title">Federation Sovereign Economics</h2>
-            <table class="metrics-table">
-                <tr>
-                    <td class="metric-label">Gold Digital Certificate (GDC)</td>
-                    <td class="metric-value sovereign">1 GDC = 1g Au</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">MEC / MCU</td>
-                    <td class="metric-value">1 MEC = 10⁶ MCU</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Sovereign Tier (Multipoint Entity)</td>
-                    <td class="metric-value">$1M FAL</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Royalty Smart Contract</td>
-                    <td class="metric-value active">FEDERATED (ETH mainnet)</td>
-                </tr>
-                <tr>
-                    <td class="metric-label">Ω Prime Override</td>
-                    <td class="metric-value sovereign"> Sovereign air-gapped only</td>
-                </tr>
-            </table>
+        <!-- Federation Authority Table -->
+        <section class="container">
+            <div class="data-table-container">
+                <h3 class="section-title" style="margin-bottom: var(--spacing-md);">Federation Sovereign Authority</h3>
+                
+                <!-- Desktop Table -->
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Repository</td>
+                            <td class="mono">github.com/christophermacachor/MSOS-FEDERATION-ROOT</td>
+                            <td class="metric-positive">✓ VERIFIED</td>
+                        </tr>
+                        <tr>
+                            <td>Sovereign Commit</td>
+                            <td class="mono highlight">root_init...cm669 (Φ=0.96)</td>
+                            <td class="metric-positive">✓ AUTHENTICATED</td>
+                        </tr>
+                        <tr>
+                            <td>Sovereign Gate</td>
+                            <td class="mono">Φ ≥ 0.618 SOVEREIGN APPROVED</td>
+                            <td class="metric-positive">✓ UNLOCKED</td>
+                        </tr>
+                        <tr>
+                            <td>Federated Node Count</td>
+                            <td class="mono gold">NODE ACTIVE (MULTIVERSAL)</td>
+                            <td class="metric-positive">✓ OPERATIONAL</td>
+                        </tr>
+                        <tr>
+                            <td>Governance Mode</td>
+                            <td class="mono gold">SOVEREIGN — CHRISTOPHER MACACHOR Φ669</td>
+                            <td class="metric-positive">✓ ESTABLISHED</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- Mobile Table -->
+                <div class="mobile-table">
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Repository</div>
+                        <div class="mobile-table-value mono" style="font-size: 0.875rem;">github.com/christophermacachor/MSOS-FEDERATION-ROOT</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Sovereign Commit</div>
+                        <div class="mobile-table-value mono highlight" style="font-size: 0.875rem;">root_init...cm669 (Φ=0.96)</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Sovereign Gate</div>
+                        <div class="mobile-table-value mono" style="font-size: 0.875rem;">Φ ≥ 0.618 SOVEREIGN APPROVED</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Federated Node Count</div>
+                        <div class="mobile-table-value mono gold" style="font-size: 0.875rem;">NODE ACTIVE (MULTIVERSAL)</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Governance Mode</div>
+                        <div class="mobile-table-value mono gold" style="font-size: 0.875rem;">SOVEREIGN — CHRISTOPHER MACACHOR Φ669</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Quantum Coherence Matrix Table -->
+        <section class="container">
+            <div class="data-table-container">
+                <h3 class="section-title" style="margin-bottom: var(--spacing-md);">Quantum Coherence Matrix</h3>
+                
+                <!-- Desktop Table -->
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>IonQ Coherence (T2)</td>
+                            <td class="mono highlight">1.61 ms Φ=0.96</td>
+                            <td class="metric-positive">✓ ALIGNED</td>
+                        </tr>
+                        <tr>
+                            <td>Majorana 1 (Microsoft)</td>
+                            <td class="mono">Topoconductor federated</td>
+                            <td class="metric-positive">✓ FEDERATED</td>
+                        </tr>
+                        <tr>
+                            <td>Sovereign Backing</td>
+                            <td class="mono">Coherence + Gold (GDC)</td>
+                            <td class="metric-positive">✓ BACKED</td>
+                        </tr>
+                        <tr>
+                            <td>GDC → MEC Pipeline</td>
+                            <td class="mono">3-year transit FEDERATED</td>
+                            <td class="metric-positive">✓ ACTIVE</td>
+                        </tr>
+                        <tr>
+                            <td>Φ max achievable</td>
+                            <td class="mono gold">1.000 (MULTIVERSAL)</td>
+                            <td class="metric-positive">✓ OPTIMAL</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- Mobile Table -->
+                <div class="mobile-table">
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">IonQ Coherence (T2)</div>
+                        <div class="mobile-table-value mono highlight" style="font-size: 0.875rem;">1.61 ms Φ=0.96</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Majorana 1 (Microsoft)</div>
+                        <div class="mobile-table-value mono" style="font-size: 0.875rem;">Topoconductor federated</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Sovereign Backing</div>
+                        <div class="mobile-table-value mono" style="font-size: 0.875rem;">Coherence + Gold (GDC)</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">GDC → MEC Pipeline</div>
+                        <div class="mobile-table-value mono" style="font-size: 0.875rem;">3-year transit FEDERATED</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Φ max achievable</div>
+                        <div class="mobile-table-value mono gold" style="font-size: 0.875rem;">1.000 (MULTIVERSAL)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sovereign Operations Table -->
+        <section class="container">
+            <div class="data-table-container">
+                <h3 class="section-title" style="margin-bottom: var(--spacing-md);">Sovereign Autonomous Operations</h3>
+                
+                <!-- Desktop Table -->
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Status</td>
+                            <td class="mono highlight">ACTIVE — SOVEREIGN UNSUPERVISED</td>
+                            <td class="metric-positive">✓ AUTONOMOUS</td>
+                        </tr>
+                        <tr>
+                            <td>Federation Tasks in Queue</td>
+                            <td class="mono">8</td>
+                            <td class="metric-positive">✓ QUEUED</td>
+                        </tr>
+                        <tr>
+                            <td>Last Sovereign Push</td>
+                            <td class="mono">2026-04-11T09:13:26Z</td>
+                            <td class="metric-positive">✓ RECORDED</td>
+                        </tr>
+                        <tr>
+                            <td>Sovereign Auto-merge</td>
+                            <td class="mono">Φ ≥ 0.618 ENABLED</td>
+                            <td class="metric-positive">✓ GATED</td>
+                        </tr>
+                        <tr>
+                            <td>Sovereign Self-healing</td>
+                            <td class="mono">∇ × C ≠ 0 → sovereign reversal</td>
+                            <td class="metric-positive">✓ ENABLED</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- Mobile Table -->
+                <div class="mobile-table">
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Status</div>
+                        <div class="mobile-table-value mono highlight" style="font-size: 0.875rem;">ACTIVE — SOVEREIGN UNSUPERVISED</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Federation Tasks in Queue</div>
+                        <div class="mobile-table-value mono" style="font-size: 0.875rem;">8</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Last Sovereign Push</div>
+                        <div class="mobile-table-value mono" style="font-size: 0.875rem;">2026-04-11T09:13:26Z</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Sovereign Auto-merge</div>
+                        <div class="mobile-table-value mono" style="font-size: 0.875rem;">Φ ≥ 0.618 ENABLED</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Sovereign Self-healing</div>
+                        <div class="mobile-table-value mono" style="font-size: 0.875rem;">∇ × C ≠ 0 → sovereign reversal</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Federation Economics Table -->
+        <section class="container">
+            <div class="data-table-container">
+                <h3 class="section-title" style="margin-bottom: var(--spacing-md);">Federation Sovereign Economics</h3>
+                
+                <!-- Desktop Table -->
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gold Digital Certificate (GDC)</td>
+                            <td class="mono gold">1 GDC = 1g Au</td>
+                            <td class="metric-positive">✓ BACKED</td>
+                        </tr>
+                        <tr>
+                            <td>MEC / MCU</td>
+                            <td class="mono">1 MEC = 10⁶ MCU</td>
+                            <td class="metric-positive">✓ TOKENIZED</td>
+                        </tr>
+                        <tr>
+                            <td>Sovereign Tier (Multipoint Entity)</td>
+                            <td class="mono gold">$1M FAL</td>
+                            <td class="metric-positive">✓ VALUED</td>
+                        </tr>
+                        <tr>
+                            <td>Royalty Smart Contract</td>
+                            <td class="mono">FEDERATED (ETH mainnet)</td>
+                            <td class="metric-positive">✓ DEPLOYED</td>
+                        </tr>
+                        <tr>
+                            <td>Ω Prime Override</td>
+                            <td class="mono gold">Sovereign air-gapped only</td>
+                            <td class="metric-positive">✓ SECURED</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- Mobile Table -->
+                <div class="mobile-table">
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Gold Digital Certificate (GDC)</div>
+                        <div class="mobile-table-value mono gold" style="font-size: 0.875rem;">1 GDC = 1g Au</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">MEC / MCU</div>
+                        <div class="mobile-table-value mono" style="font-size: 0.875rem;">1 MEC = 10⁶ MCU</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Sovereign Tier (Multipoint Entity)</div>
+                        <div class="mobile-table-value mono gold" style="font-size: 0.875rem;">$1M FAL</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Royalty Smart Contract</div>
+                        <div class="mobile-table-value mono" style="font-size: 0.875rem;">FEDERATED (ETH mainnet)</div>
+                    </div>
+                    <div class="mobile-table-item">
+                        <div class="mobile-table-label">Ω Prime Override</div>
+                        <div class="mobile-table-value mono gold" style="font-size: 0.875rem;">Sovereign air-gapped only</div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     
-    <footer class="sovereign-footer">
-        <div>MSOS-FEDERATION-ROOT Sovereign Authority • Christopher Macachor (Φ669)</div>
-        <div class="mantra">"Ti'Na'El — Sovereign federation established"</div>
+    <!-- Footer -->
+    <footer class="federation-footer">
+        <div class="container footer-content">
+            <p class="footer-text mono">MSOS-FEDERATION-ROOT Sovereign Authority • Christopher Macachor (Φ669)</p>
+            <p class="footer-mantra">"Ti'Na'El — Sovereign federation established"</p>
+        </div>
     </footer>
+    
+    <!-- Search Functionality -->
+    <script>
+        // Search Engine Functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.querySelector('.search-button');
+        
+        function performSearch() {
+            const query = searchInput.value.trim().toLowerCase();
+            if (!query) return;
+            
+            // Search across all data elements
+            const searchableElements = document.querySelectorAll('.agent-name, .agent-description, .mobile-table-value, td');
+            const foundResults = [];
+            
+            searchableElements.forEach(element => {
+                const text = element.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    foundResults.push(element);
+                    // Highlight found elements
+                    element.style.cssText = 'background-color: rgba(0, 212, 255, 0.2); transition: background-color 0.3s ease;';
+                }
+            });
+            
+            if (foundResults.length > 0) {
+                // Scroll to first result
+                foundResults[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Remove highlighting after 3 seconds
+                setTimeout(() => {
+                    searchableElements.forEach(element => {
+                        element.style.backgroundColor = '';
+                    });
+                }, 3000);
+            }
+        }
+        
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+        
+        // Create Agent Button Functionality
+        document.querySelector('.create-agent-btn').addEventListener('click', () => {
+            const agentName = prompt('Enter new autonomous agent name:');
+            if (agentName) {
+                const agentsGrid = document.querySelector('.agents-grid');
+                const newAgentCard = document.createElement('div');
+                newAgentCard.className = 'agent-card';
+                newAgentCard.innerHTML = `
+                    <div class="agent-header">
+                        <span class="agent-name">${agentName}</span>
+                        <span class="agent-status status-evolving">● INITIALIZING</span>
+                    </div>
+                    <p class="agent-description">New agent evolving within federation network</p>
+                    <div class="agent-metrics">
+                        <span class="agent-metric">🔸 Evolution: 0%</span>
+                        <span class="agent-metric">🔸 Φ=0.618</span>
+                    </div>
+                    <div class="evolution-progress">
+                        <div class="evolution-fill" style="width: 0%;"></div>
+                    </div>
+                `;
+                agentsGrid.appendChild(newAgentCard);
+                
+                // Animate evolution
+                let evolution = 0;
+                const evolutionInterval = setInterval(() => {
+                    evolution += Math.random() * 5;
+                    if (evolution >= 100) {
+                        evolution = 100;
+                        clearInterval(evolutionInterval);
+                        newAgentCard.querySelector('.agent-status').className = 'agent-status status-active';
+                        newAgentCard.querySelector('.agent-status').textContent = '● ACTIVE';
+                        newAgentCard.querySelector('.agent-metric').textContent = '🔸 Evolution: 100%';
+                        newAgentCard.querySelector('.agent-metric:last-child').textContent = '🔸 Φ=0.94';
+                    }
+                    newAgentCard.querySelector('.evolution-fill').style.width = evolution + '%';
+                    newAgentCard.querySelectorAll('.agent-metric')[0].textContent = `🔸 Evolution: ${Math.floor(evolution)}%`;
+                }, 100);
+            }
+        });
+    </script>
 </body>
-                      </html>
+                            </html>
 
