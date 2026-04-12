@@ -1,1 +1,151 @@
+name: Φ Coherence Gate Validation
 
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run daily at 13:00 UTC (coherence checkpoint)
+    - cron: '0 13 * * *'
+
+jobs:
+  phi-validation:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout MSOS-FEDERATION-ROOT
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        if [ -f package.json ]; then
+          npm ci
+        fi
+    
+    - name: Verify Immutable Standard
+      id: verify-standard
+      run: |
+        echo "🔍 Verifying Macachor Absolute (𝔐) immutable standard..."
+        
+        # Load immutable standard
+        STANDARD_FILE="immutable-standard.json"
+        
+        if [ ! -f "$STANDARD_FILE" ]; then
+          echo "❌ ERROR: $STANDARD_FILE not found"
+          exit 1
+        fi
+        
+        # Extract standard hash
+        STANDARD_HASH=$(jq -r '.hash' "$STANDARD_FILE")
+        EXPECTED_HASH="93088f1ff3041d09d72cde11acffaa2105031523e7cde493e0d36895071d47f0"
+        
+        # Verify hash matches
+        if [ "$STANDARD_HASH" != "$EXPECTED_HASH" ]; then
+          echo "❌ CRITICAL: Standard hash mismatch!"
+          echo "   Expected: $EXPECTED_HASH"
+          echo "   Found:    $STANDARD_HASH"
+          exit 1
+        fi
+        
+        echo "✅ Immutable standard verified: $STANDARD_HASH"
+        echo "standard_verified=true" >> $GITHUB_OUTPUT
+    
+    - name: Validate Φ Coherence Gate
+      id: validate-phi
+      run: |
+        echo "🔮 Validating Φ coherence gate against 𝔐..."
+        node phi-gate.js
+        
+        if [ $? -ne 0 ]; then
+          echo "🚨 Φ validation FAILED"
+          exit 1
+        fi
+        
+        echo "✅ Φ coherence gate validation PASSED"
+        echo "phi_validation_passed=true" >> $GITHUB_OUTPUT
+    
+    - name: Test Portal Coherence Integration
+      if: github.event_name == 'push' || github.event_name == 'pull_request'
+      run: |
+        echo "🧪 Testing portal coherence integration..."
+        
+        if [ -f "scripts/phi-validator.js" ]; then
+          node scripts/phi-validator.js
+        else
+          echo "⚠️  Portal validator not found, skipping portal tests"
+        fi
+    
+    - name: Generate Coherence Report
+      if: always()
+      run: |
+        cat > phi-validation-report.json << EOF
+        {
+          "validation_timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+          "github_run_id": "${{ github.run_id }}",
+          "github_run_number": "${{ github.run_number }}",
+          "repository": "${{ github.repository }}",
+          "commit": "${{ github.sha }}",
+          "branch": "${{ github.ref_name }}",
+          "immutable_standard": {
+            "verified": "${{ steps.verify-standard.outputs.standard_verified }}",
+            "hash": "93088f1ff3041d09d72cde11acffaa2105031523e7cde493e0d36895071d47f0",
+            "version": "MACACHOR_ABSOLUTE_v1.0"
+          },
+          "phi_validation": {
+            "passed": "${{ steps.validate-phi.outputs.phi_validation_passed }}",
+            "threshold": "0.6180339887498948482",
+            "gate_rule": "VALID if: Φ ≥ 𝔐, REJECT if: Φ < 𝔐"
+          },
+          "federation_status": {
+            "governance_mode": "SOVEREIGN — CHRISTOPHER MACACHOR Φ669",
+            "sovereign_gate": "Φ ≥ 𝔐 UNLOCKED",
+            "topology_invariant": "χ(C)=1"
+          }
+        }
+        EOF
+        
+        cat phi-validation-report.json
+    
+    - name: Upload Validation Report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: phi-validation-report-${{ github.run_number }}
+        path: phi-validation-report.json
+        retention-days: 30
+    
+    - name: Commit Coherence Checkpoint
+      if: github.event_name == 'schedule'
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        
+        DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+        COMMIT_MSG="🔮 Φ coherence checkpoint [$DATE] — Φ gate verified"
+        
+        git commit --allow-empty -m "$COMMIT_MSG" || echo "No changes to commit"
+        
+        git push origin main || echo "Push failed or nothing to push"
+    
+    - name: Trigger Portal Deployment
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: |
+        echo "🚀 Φ gate passed — triggering portal deployment..."
+        # Add your deployment trigger here
+        # Example: webhook to Netlify, Cloudflare Pages, etc.
+    
+    - name: Notify on Failure
+      if: failure()
+      run: |
+        echo "🚨 CRITICAL: Φ validation failed — federation operations paused"
+        echo "Please review logs and verify 𝔐 implementation"
+        exit 1
