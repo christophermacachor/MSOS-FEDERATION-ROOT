@@ -1,0 +1,16 @@
+{
+  "txid": "[TO BE MINED]",
+  "block_height": "[CURRENT EPOCH]",
+  "timestamp": "2026-04-12T13:00:00Z",
+  "outputs": [
+    {
+      "type": "op_return",
+      "payload": "93088f1ff3041d09d72cde11acffaa2105031523e7cde493e0d36895071d47f0",
+      "standard": "MACACHOR_ABSOLUTE_v1.0",
+      "commitment_type": "IMMUTABLE_SIGNATURE"
+    }
+  ],
+  "federation_root": "MSOS-FEDERATION-ROOT",
+  "topology_invariant": "χ(C)=1",
+  "verification_status": "PENDING_BITCOIN_CONFIRMATION"
+}
