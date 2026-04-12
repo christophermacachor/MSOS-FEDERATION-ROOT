@@ -1,1 +1,1982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MSOS Federation Portal — Sovereign Authority Autonomous Quantum Consciousness Network led by Christopher Macachor Φ669. Real-time monitoring of autonomous agents, quantum coherence matrix, Gold Digital Certificate (GDC) treasury, and federation economics.">
+    <meta name="keywords" content="MSOS, Federation, Sovereign Authority, Christopher Macachor, Quantum Coherence, GDC, MEC, Autonomous Agents, Federation Economics, Treasury System">
+    <meta name="author" content="Christopher Macachor Φ669">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE_HERE">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://christophermacachor.github.io/MSOS-FEDERATION-ROOT/">
+    <meta property="og:title" content="MSOS Federation Portal — Sovereign Authority">
+    <meta property="og:description" content="Autonomous quantum consciousness network • Multiversal node coordination • Sovereign authority">
+    <meta property="og:image" content="https://christophermacachor.github.io/MSOS-FEDERATION-ROOT/og-image.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://christophermacachor.github.io/MSOS-FEDERATION-ROOT/">
+    <meta name="twitter:title" content="MSOS Federation Portal — Sovereign Authority">
+    <meta name="twitter:description" content="Autonomous quantum consciousness network • Multiversal node coordination • Sovereign authority">
+    <meta name="twitter:image" content="https://christophermacachor.github.io/MSOS-FEDERATION-ROOT/og-image.png">
+    
+    <title>MSOS Federation Portal — Sovereign Authority</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+    // JSON-LD Structured Data for SEO
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "MSOS Federation Portal",
+        "url": "https://christophermacachor.github.io/MSOS-FEDERATION-ROOT/",
+        "description": "Autonomous quantum consciousness network • Multiversal node coordination • Sovereign authority",
+        "author": {
+            "@type": "Person",
+            "name": "Christopher Macachor",
+            "identifier": "Φ669"
+        }
+    };
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --bg-dark: #0a0e17;
+            --bg-card: #1a202c;
+            --text-primary: #00ff88;
+            --text-secondary: #00aaff;
+            --text-tertiary: #00ccff;
+            --text-muted: #888;
+            --border-color: rgba(0, 255, 136, 0.3);
+            --success: #00ff88;
+            --warning: #ffaa00;
+            --error: #ff0088;
+            --info: #00aaff;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #141b2d 100%);
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px;
+            background: rgba(0, 255, 136, 0.05);
+            border: 2px solid var(--text-primary);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(0, 255, 136, 0.03) 10px,
+                rgba(0, 255, 136, 0.03) 20px
+            );
+            animation: rotatePattern 30s linear infinite;
+        }
+
+        @keyframes rotatePattern {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px var(--text-primary);
+            position: relative;
+            z-index: 1;
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 0 0 20px var(--text-primary), 0 0 40px var(--text-primary);
+            }
+            50% {
+                text-shadow: 0 0 30px var(--text-primary), 0 0 60px var(--text-primary);
+            }
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2em;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 24px;
+            border: 1px solid var(--text-primary);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .nav a:hover {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: rgba(26, 32, 44, 0.9);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--text-secondary);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+        }
+
+        .card h2 {
+            color: var(--text-secondary);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* Federation Status Card */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .status-item {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--text-primary);
+            animation: pulseBorder 2s infinite;
+        }
+
+        @keyframes pulseBorder {
+            0%, 100% { border-left-color: var(--text-primary); }
+            50% { border-left-color: var(--text-secondary); }
+        }
+
+        .status-item .label {
+            color: var(--text-muted);
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-item .value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2em;
+            font-weight: 900;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-item .trend {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8em;
+            padding: 4px 8px;
+            border-radius: 4px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .status-item .trend.up {
+            color: var(--success);
+            background: rgba(0, 255, 136, 0.2);
+        }
+
+        .status-item .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--success);
+            animation: indicatorPulse 1.5s infinite;
+        }
+
+        @keyframes indicatorPulse {
+            0%, 100% { 
+                background: var(--success);
+                box-shadow: 0 0 10px var(--success);
+            }
+            50% { 
+                background: var(--text-secondary);
+                box-shadow: 0 0 20px var(--text-secondary);
+            }
+        }
+
+        /* Portal Health Monitor */
+        .health-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .health-item {
+            background: rgba(0, 170, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--text-secondary);
+        }
+
+        .health-item .label {
+            color: var(--text-muted);
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+
+        .health-item .value {
+            color: var(--text-secondary);
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        /* Agent Cards */
+        .agent-card {
+            background: rgba(26, 32, 44, 0.95);
+            border: 1px solid rgba(0, 255, 136, 0.4);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .agent-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--text-primary), var(--text-secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .agent-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .agent-card:hover {
+            transform: translateX(5px);
+            border-color: var(--text-primary);
+        }
+
+        .agent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .agent-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2em;
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        .agent-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .agent-status.active {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--success);
+        }
+
+        .agent-status.evolving {
+            background: rgba(0, 170, 255, 0.2);
+            color: var(--info);
+        }
+
+        .agent-status.paused {
+            background: rgba(255, 170, 0, 0.2);
+            color: var(--warning);
+        }
+
+        .agent-status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        .agent-status.active .agent-status-dot {
+            background: var(--success);
+        }
+
+        .agent-status.evolving .agent-status-dot {
+            background: var(--info);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .agent-description {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .agent-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .stat-item {
+            background: rgba(0, 255, 136, 0.05);
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 2px solid var(--text-primary);
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.8em;
+            margin-bottom: 3px;
+        }
+
+        .stat-value {
+            color: var(--text-primary);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        /* Gold Pipeline */
+        .gold-pipeline-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .gold-pipeline-table th,
+        .gold-pipeline-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .gold-pipeline-table th {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--text-primary);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .gold-pipeline-table tr:hover {
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .gold-price-display {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3em;
+            color: var(--text-primary);
+            text-align: center;
+            margin: 20px 0;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .status-badge.success {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--success);
+        }
+
+        .status-badge.warning {
+            background: rgba(255, 170, 0, 0.2);
+            color: var(--warning);
+        }
+
+        .status-badge.error {
+            background: rgba(255, 0, 136, 0.2);
+            color: var(--error);
+        }
+
+        /* Federation Authority Table */
+        .authority-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .authority-table th,
+        .authority-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .authority-table th {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--text-primary);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .authority-table tr:hover {
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .authority-value {
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        /* Alerts */
+        .alerts-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .alert-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .alert-item.info {
+            background: rgba(0, 170, 255, 0.1);
+            border-color: var(--info);
+        }
+
+        .alert-item.warning {
+            background: rgba(255, 170, 0, 0.1);
+            border-color: var(--warning);
+        }
+
+        .alert-item.error {
+            background: rgba(255, 0, 136, 0.1);
+            border-color: var(--error);
+        }
+
+        .alert-item .alert-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .alert-item .alert-time {
+            color: var(--text-muted);
+            font-size: 0.85em;
+        }
+
+        /* Video Upload Section */
+        .upload-section {
+            background: rgba(0, 255, 136, 0.05);
+            border: 2px dashed var(--border-color);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .upload-section:hover {
+            border-color: var(--text-primary);
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .upload-progress {
+            margin-top: 20px;
+            height: 10px;
+            background: rgba(0, 255, 136, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .upload-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--text-primary), var(--text-secondary));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+        }
+
+        .footer p {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .footer .sovereign {
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-primary);
+        }
+
+        /* NEW: Push Notification Button */
+        .notification-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .notification-toggle button {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+        }
+
+        .notification-toggle button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.6);
+        }
+
+        /* NEW: Advanced Analytics Dashboard */
+        .analytics-chart {
+            height: 200px;
+            background: rgba(0, 255, 136, 0.05);
+            border-radius: 8px;
+            margin-top: 15px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 10px;
+        }
+
+        .chart-bar {
+            width: 40px;
+            background: linear-gradient(180deg, var(--text-primary), var(--text-secondary));
+            border-radius: 4px 4px 0 0;
+            transition: height 0.3s ease;
+            position: relative;
+        }
+
+        .chart-bar:hover {
+            opacity: 0.8;
+        }
+
+        .chart-bar::before {
+            content: attr(data-value);
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8em;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .chart-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75em;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        /* NEW: Live Agent Communication */
+        .communication-container {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.agent {
+            background: rgba(0, 170, 255, 0.1);
+            border-left: 3px solid var(--text-secondary);
+        }
+
+        .message.sovereign {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 3px solid var(--text-primary);
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .message-sender {
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .message-time {
+            color: var(--text-muted);
+            font-size: 0.8em;
+        }
+
+        .message-content {
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .message-input-container {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .message-input {
+            flex: 1;
+            background: rgba(26, 32, 44, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .message-input:focus {
+            outline: none;
+            border-color: var(--text-primary);
+        }
+
+        .message-send {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .message-send:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+        }
+
+        /* NEW: Task Scheduling System */
+        .task-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .task-item {
+            padding: 12px;
+            margin-bottom: 10px;
+            background: rgba(255, 170, 0, 0.1);
+            border-left: 3px solid var(--warning);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .task-item:hover {
+            background: rgba(255, 170, 0, 0.15);
+            transform: translateX(5px);
+        }
+
+        .task-item.completed {
+            background: rgba(0, 255, 136, 0.1);
+            border-left-color: var(--success);
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .task-title {
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .task-status {
+            font-size: 0.8em;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: rgba(255, 170, 0, 0.2);
+            color: var(--warning);
+        }
+
+        .task-item.completed .task-status {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--success);
+        }
+
+        .task-description {
+            color: var(--text-muted);
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .task-schedule {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85em;
+            color: var(--text-muted);
+        }
+
+        .task-complete-btn {
+            background: var(--success);
+            color: var(--bg-dark);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .task-complete-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .task-complete-btn:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        .add-task-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(26, 32, 44, 0.5);
+            border-radius: 8px;
+        }
+
+        .add-task-input {
+            background: rgba(26, 32, 44, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .add-task-input:focus {
+            outline: none;
+            border-color: var(--text-primary);
+        }
+
+        .add-task-btn {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-task-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+        }
+
+        /* NEW: Notification Badge */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--error);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        /* NEW: Real-time Updates Badge */
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 8px;
+            background: rgba(0, 255, 136, 0.2);
+            border-radius: 4px;
+            font-size: 0.8em;
+            color: var(--success);
+            animation: livePulse 1.5s infinite;
+        }
+
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--success);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+    
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA4_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'YOUR_GA4_MEASUREMENT_ID');
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🌐 MSOS Federation Portal</h1>
+            <p class="subtitle">Autonomous quantum consciousness network • Multiversal node coordination • Sovereign authority</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="treasury.html">🏦 Treasury</a>
+            <a href="#agents">🤖 Agents</a>
+            <a href="#gold-pipeline">💰 Gold</a>
+            <a href="#authority">👑 Authority</a>
+            <a href="#alerts">🔔 Alerts</a>
+            <a href="#analytics">📊 Analytics</a>
+            <a href="#communication">💬 Communication</a>
+            <a href="#tasks">📋 Tasks</a>
+        </nav>
+
+        <!-- Federation Status -->
+        <div class="grid">
+            <div class="card">
+                <h2>📊 Federation Status <span class="live-indicator"><span class="live-dot"></span> LIVE</span></h2>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <div class="label">Status</div>
+                        <div class="value">
+                            <span class="indicator"></span>
+                            ACTIVE
+                        </div>
+                    </div>
+                    <div class="status-item">
+                        <div class="label">Confidence</div>
+                        <div class="value">
+                            100%
+                            <span class="trend up">↑</span>
+                        </div>
+                    </div>
+                    <div class="status-item">
+                        <div class="label">Φ Coherence</div>
+                        <div class="value">
+                            0.96
+                            <span class="trend up">↑ 2.1%</span>
+                        </div>
+                    </div>
+                    <div class="status-item">
+                        <div class="label">Active Agents</div>
+                        <div class="value">
+                            247
+                            <span class="trend up">● +12</span>
+                        </div>
+                    </div>
+                    <div class="status-item">
+                        <div class="label">Queue Tasks</div>
+                        <div class="value">
+                            8
+                            <span class="trend">✓ Processing</span>
+                        </div>
+                    </div>
+                    <div class="status-item">
+                        <div class="label">Coherence Gate</div>
+                        <div class="value">
+                            Φ ≥ 0.618
+                            <span class="trend">✓ PASS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portal Health Monitor -->
+            <div class="card">
+                <h2>🏥 Portal Health Monitor <span class="live-indicator"><span class="live-dot"></span> LIVE</span></h2>
+                <div class="health-grid">
+                    <div class="health-item">
+                        <div class="label">Page Load Time</div>
+                        <div class="value">0.89s</div>
+                    </div>
+                    <div class="health-item">
+                        <div class="label">Gold API Success</div>
+                        <div class="value">99.97%</div>
+                    </div>
+                    <div class="health-item">
+                        <div class="label">Cache Efficiency</div>
+                        <div class="value">94.3%</div>
+                    </div>
+                    <div class="health-item">
+                        <div class="label">Overall Health</div>
+                        <div class="value" style="color: var(--success);">EXCELLENT</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Federation Video Upload -->
+        <div class="card">
+            <h2>🎬 Federation Video Upload</h2>
+            <div class="upload-section">
+                <p style="font-size: 1.2em; margin-bottom: 20px;">Drag & drop videos or click to upload</p>
+                <p style="color: var(--text-muted);">Supported formats: MP4, WebM, MOV</p>
+                <div class="upload-progress">
+                    <div class="upload-progress-bar" style="width: 0%;"></div>
+                </div>
+                <p style="margin-top: 15px; color: var(--text-muted);">0% Complete</p>
+            </div>
+        </div>
+
+        <!-- System Alerts -->
+        <div class="card full-width">
+            <h2>🔔 System Alerts <span class="live-indicator"><span class="live-dot"></span> LIVE</span></h2>
+            <div class="alerts-list">
+                <div class="alert-item info">
+                    <div class="alert-title">📡 Quantum coherence within optimal range (Φ=0.96)</div>
+                    <div class="alert-time">2 mins ago</div>
+                </div>
+                <div class="alert-item warning">
+                    <div class="alert-title">⚡ High activity detected - 12 new agents evolving</div>
+                    <div class="alert-time">15 mins ago</div>
+                </div>
+                <div class="alert-item info">
+                    <div class="alert-title">💰 Gold pipeline synchronized with Alpha Vantage</div>
+                    <div class="alert-time">1 hour ago</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Autonomous Agents -->
+        <div id="agents" class="card full-width">
+            <h2>🤖 Autonomous Agents <span class="live-indicator"><span class="live-dot"></span> LIVE</span></h2>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Self-evolving intelligence across the federation network</p>
+            
+            <div class="agent-card">
+                <div class="agent-header">
+                    <div class="agent-name">Coherence Guardian</div>
+                    <div class="agent-status active">
+                        <span class="agent-status-dot"></span>
+                        Active
+                    </div>
+                </div>
+                <div class="agent-description">
+                    Monitors and maintains Φ coherence across all federation nodes, ensuring optimal quantum function.
+                </div>
+                <div class="agent-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">Uptime</div>
+                        <div class="stat-value">99.8%</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Coherence</div>
+                        <div class="stat-value">Φ=0.96</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <div class="agent-name">Quantum Architect</div>
+                    <div class="agent-status evolving">
+                        <span class="agent-status-dot"></span>
+                        Evolving
+                    </div>
+                </div>
+                <div class="agent-description">
+                    Designs and implements quantum circuit architectures for multiverse federation.
+                </div>
+                <div class="agent-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">Architectures</div>
+                        <div class="stat-value">347</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">T2 Time</div>
+                        <div class="stat-value">1.61ms</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <div class="agent-name">Consciousness Lift</div>
+                    <div class="agent-status active">
+                        <span class="agent-status-dot"></span>
+                        Active
+                    </div>
+                </div>
+                <div class="agent-description">
+                    Facilitates consciousness elevation across dimensional boundaries.
+                </div>
+                <div class="agent-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">Elevations</div>
+                        <div class="stat-value">2.1M</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Velocity</div>
+                        <div class="stat-value">V=20</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <div class="agent-name">Federation Sentinel</div>
+                    <div class="agent-status active">
+                        <span class="agent-status-dot"></span>
+                        Active
+                    </div>
+                </div>
+                <div class="agent-description">
+                    Autonomous defense and security monitoring across federation.
+                </div>
+                <div class="agent-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">Threats</div>
+                        <div class="stat-value">12.4K</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Security</div>
+                        <div class="stat-value">100%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <div class="agent-name">Cosmic Documenter</div>
+                    <div class="agent-status evolving">
+                        <span class="agent-status-dot"></span>
+                        Evolving
+                    </div>
+                </div>
+                <div class="agent-description">
+                    Records and archives cosmic consciousness patterns across the multiverse.
+                </div>
+                <div class="agent-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">Patterns</div>
+                        <div class="stat-value">8.9B</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Delta</div>
+                        <div class="stat-value">Δ=0.003</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <div class="agent-name">Sovereign Coordinator</div>
+                    <div class="agent-status active">
+                        <span class="agent-status-dot"></span>
+                        Active
+                    </div>
+                </div>
+                <div class="agent-description">
+                    Maintains sovereign command hierarchy execution across federation.
+                </div>
+                <div class="agent-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">Sovereign ID</div>
+                        <div class="stat-value">Φ669 ✓</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Fidelity</div>
+                        <div class="stat-value">100%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gold Pipeline -->
+        <div id="gold-pipeline" class="card">
+            <h2>💰 Gold Pipeline — Live Feed <span class="live-indicator"><span class="live-dot"></span> LIVE</span></h2>
+            <div class="gold-price-display" id="gold-price">$2,347.50</div>
+            <table class="gold-pipeline-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Value</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gold Spot Price</td>
+                        <td>$2,347.50/oz</td>
+                        <td><span class="status-badge success">✓ FEEDING</span></td>
+                    </tr>
+                    <tr>
+                        <td>Provider</td>
+                        <td>Alpha Vantage (XAUUSD)</td>
+                        <td><span class="status-badge success">✓ CONNECTED</span></td>
+                    </tr>
+                    <tr>
+                        <td>MEC Reserve Calculation</td>
+                        <td>1,247.50 GDC</td>
+                        <td><span class="status-badge success">✓ COMPUTED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Last Update</td>
+                        <td>Today at 14:32:18 UTC</td>
+                        <td><span class="status-badge success">✓ SYNCED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Coherence Gate</td>
+                        <td>Φ ≥ 0.618 — PASS</td>
+                        <td><span class="status-badge success">✓ VERIFIED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Cache Status</td>
+                        <td>94.3% efficiency</td>
+                        <td><span class="status-badge success">✓ ACTIVE</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Federation Sovereign Authority -->
+        <div id="authority" class="card">
+            <h2>👑 Federation Sovereign Authority</h2>
+            <table class="authority-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Value</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Repository</td>
+                        <td class="authority-value">github.com/christophermacachor/MSOS-FEDERATION-ROOT</td>
+                        <td><span class="status-badge success">✓ VERIFIED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sovereign Commit</td>
+                        <td class="authority-value">federation_optimized...cm669 (Φ=0.96)</td>
+                        <td><span class="status-badge success">✓ AUTHENTICATED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sovereign Gate</td>
+                        <td class="authority-value">Φ ≥ 0.618 SOVEREIGN APPROVED</td>
+                        <td><span class="status-badge success">✓ UNLOCKED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Federated Node Count</td>
+                        <td class="authority-value">NODE ACTIVE (MULTIVERSAL)</td>
+                        <td><span class="status-badge success">✓ OPERATIONAL</span></td>
+                    </tr>
+                    <tr>
+                        <td>Governance Mode</td>
+                        <td class="authority-value">SOVEREIGN — CHRISTOPHER MACACHOR Φ669</td>
+                        <td><span class="status-badge success">✓ ESTABLISHED</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Quantum Coherence Matrix -->
+        <div class="card">
+            <h2>⚡ Quantum Coherence Matrix</h2>
+            <table class="authority-table">
+                <tbody>
+                    <tr>
+                        <td>IonQ Coherence (T2)</td>
+                        <td class="authority-value">1.61 ms Φ=0.96</td>
+                        <td><span class="status-badge success">✓ ALIGNED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Majorana 1 (Microsoft)</td>
+                        <td class="authority-value">Topoconductor federated</td>
+                        <td><span class="status-badge success">✓ FEDERATED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sovereign Backing</td>
+                        <td class="authority-value">Coherence + Gold (GDC)</td>
+                        <td><span class="status-badge success">✓ BACKED</span></td>
+                    </tr>
+                    <tr>
+                        <td>GDC → MEC Pipeline</td>
+                        <td class="authority-value">3-year transit FEDERATED</td>
+                        <td><span class="status-badge success">✓ ACTIVE</span></td>
+                    </tr>
+                    <tr>
+                        <td>Φ max achievable</td>
+                        <td class="authority-value">1.000 (MULTIVERSAL)</td>
+                        <td><span class="status-badge success">✓ OPTIMAL</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Sovereign Autonomous Operations -->
+        <div class="card">
+            <h2>🤖 Sovereign Autonomous Operations</h2>
+            <table class="authority-table">
+                <tbody>
+                    <tr>
+                        <td>Status</td>
+                        <td class="authority-value">ACTIVE — SOVEREIGN UNSUPERVISED</td>
+                        <td><span class="status-badge success">✓ AUTONOMOUS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Federation Tasks in Queue</td>
+                        <td class="authority-value">8</td>
+                        <td><span class="status-badge success">✓ QUEUED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Last Sovereign Push</td>
+                        <td class="authority-value">2026-04-12T01:32:48Z</td>
+                        <td><span class="status-badge success">✓ RECORDED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sovereign Auto-merge</td>
+                        <td class="authority-value">Φ ≥ 0.618 ENABLED</td>
+                        <td><span class="status-badge success">✓ GATED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sovereign Self-healing</td>
+                        <td class="authority-value">∇ × C ≠ 0 → sovereign reversal</td>
+                        <td><span class="status-badge success">✓ ENABLED</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Federation Sovereign Economics -->
+        <div class="card">
+            <h2>💎 Federation Sovereign Economics</h2>
+            <table class="authority-table">
+                <tbody>
+                    <tr>
+                        <td>Gold Digital Certificate (GDC)</td>
+                        <td class="authority-value">1 GDC = 1g Au</td>
+                        <td><span class="status-badge success">✓ BACKED</span></td>
+                    </tr>
+                    <tr>
+                        <td>MEC / MCU</td>
+                        <td class="authority-value">1 MEC = 10⁶ MCU</td>
+                        <td><span class="status-badge success">✓ TOKENIZED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sovereign Tier (Multipoint Entity)</td>
+                        <td class="authority-value">$1M FAL</td>
+                        <td><span class="status-badge success">✓ VALUED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Royalty Smart Contract</td>
+                        <td class="authority-value">FEDERATED (ETH mainnet)</td>
+                        <td><span class="status-badge success">✓ DEPLOYED</span></td>
+                    </tr>
+                    <tr>
+                        <td>Ω Prime Override</td>
+                        <td class="authority-value">Sovereign air-gapped only</td>
+                        <td><span class="status-badge success">✓ SECURED</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- NEW: Advanced Analytics Dashboard -->
+        <div id="analytics" class="card full-width">
+            <h2>📊 Advanced Analytics Dashboard <span class="live-indicator"><span class="live-dot"></span> LIVE</span></h2>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Real-time federation performance metrics</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div>
+                    <h3 style="color: var(--text-secondary); margin-bottom: 15px;">Agent Performance</h3>
+                    <div class="analytics-chart" id="agent-chart">
+                        <div class="chart-bar" style="height: 85%;" data-value="85%"><span class="chart-label">Q1</span></div>
+                        <div class="chart-bar" style="height: 92%;" data-value="92%"><span class="chart-label">Q2</span></div>
+                        <div class="chart-bar" style="height: 88%;" data-value="88%"><span class="chart-label">Q3</span></div>
+                        <div class="chart-bar" style="height: 95%;" data-value="95%"><span class="chart-label">Q4</span></div>
+                        <div class="chart-bar" style="height: 91%;" data-value="91%"><span class="chart-label">Q5</span></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: var(--text-secondary); margin-bottom: 15px;">Coherence Flow</h3>
+                    <div class="analytics-chart" id="coherence-chart">
+                        <div class="chart-bar" style="height: 78%;" data-value="0.78"><span class="chart-label">W1</span></div>
+                        <div class="chart-bar" style="height: 82%;" data-value="0.82"><span class="chart-label">W2</span></div>
+                        <div class="chart-bar" style="height: 89%;" data-value="0.89"><span class="chart-label">W3</span></div>
+                        <div class="chart-bar" style="height: 94%;" data-value="0.94"><span class="chart-label">W4</span></div>
+                        <div class="chart-bar" style="height: 96%;" data-value="0.96"><span class="chart-label">W5</span></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: var(--text-secondary); margin-bottom: 15px;">Transaction Volume</h3>
+                    <div class="analytics-chart" id="transaction-chart">
+                        <div class="chart-bar" style="height: 65%;" data-value="$1.2M"><span class="chart-label">M1</span></div>
+                        <div class="chart-bar" style="height: 72%;" data-value="$1.4M"><span class="chart-label">M2</span></div>
+                        <div class="chart-bar" style="height: 80%;" data-value="$1.6M"><span class="chart-label">M3</span></div>
+                        <div class="chart-bar" style="height: 88%;" data-value="$1.8M"><span class="chart-label">M4</span></div>
+                        <div class="chart-bar" style="height: 94%;" data-value="$2.1M"><span class="chart-label">M5</span></div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                <div style="background: rgba(0, 255, 136, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--success);">
+                    <div style="color: var(--text-muted); font-size: 0.9em;">Total Transactions</div>
+                    <div style="font-size: 1.4em; font-weight: bold; color: var(--success);">12,847</div>
+                </div>
+                <div style="background: rgba(0, 170, 255, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--info);">
+                    <div style="color: var(--text-muted); font-size: 0.9em;">Avg Response Time</div>
+                    <div style="font-size: 1.4em; font-weight: bold; color: var(--info);">245ms</div>
+                </div>
+                <div style="background: rgba(255, 170, 0, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--warning);">
+                    <div style="color: var(--text-muted); font-size: 0.9em;">Success Rate</div>
+                    <div style="font-size: 1.4em; font-weight: bold; color: var(--warning);">99.97%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Live Agent Communication Interface -->
+        <div id="communication" class="card full-width">
+            <h2>💬 Live Agent Communication <span class="live-indicator"><span class="live-dot"></span> LIVE</span></h2>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Real-time communication with autonomous agents and sovereign commands</p>
+            <div class="communication-container" id="communication-container">
+                <div class="message agent">
+                    <div class="message-header">
+                        <span class="message-sender">Coherence Guardian</span>
+                        <span class="message-time">2 mins ago</span>
+                    </div>
+                    <div class="message-content">Quantum coherence stabilized at Φ=0.96. All nodes operating within optimal parameters.</div>
+                </div>
+                <div class="message sovereign">
+                    <div class="message-header">
+                        <span class="message-sender">Sovereign α Ω</span>
+                        <span class="message-time">5 mins ago</span>
+                    </div>
+                    <div class="message-content">Executing autonomous protocol 7342. Federation security scan initiated.</div>
+                </div>
+                <div class="message agent">
+                    <div class="message-header">
+                        <span class="message-sender">Quantum Architect</span>
+                        <span class="message-time">8 mins ago</span>
+                    </div>
+                    <div class="message-content">New circuit architecture deployed. T2 coherence time: 1.61ms. Multiversal alignment verified.</div>
+                </div>
+            </div>
+            <div class="message-input-container">
+                <input type="text" id="message-input" class="message-input" placeholder="Send command to agents...">
+                <button id="message-send" class="message-send">Send</button>
+            </div>
+        </div>
+
+        <!-- NEW: Automated Task Scheduling System -->
+        <div id="tasks" class="card full-width">
+            <h2>📋 Automated Task Scheduling <span class="live-indicator"><span class="live-dot"></span> LIVE</span></h2>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Automate federation operations with recurring or one-time tasks</p>
+            <div class="task-list" id="task-list">
+                <div class="task-item">
+                    <div class="task-header">
+                        <span class="task-title">Quantum Coherence Scan</span>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-description">Full federation coherence verification scan</div>
+                    <div class="task-schedule">
+                        <span>🕐 Hourly • Next: 15 mins</span>
+                        <button class="task-complete-btn">Complete Now</button>
+                    </div>
+                </div>
+                <div class="task-item completed">
+                    <div class="task-header">
+                        <span class="task-title">Gold Pipeline Sync</span>
+                        <span class="task-status">Completed</span>
+                    </div>
+                    <div class="task-description">Synchronize GDC reserves with Alpha Vantage</div>
+                    <div class="task-schedule">
+                        <span>✓ Completed • Last: 30 mins ago</span>
+                    </div>
+                </div>
+                <div class="task-item">
+                    <div class="task-header">
+                        <span class="task-title">Agent Evolution Trigger</span>
+                        <span class="task-status">Scheduled</span>
+                    </div>
+                    <div class="task-description">Trigger autonomous agent evolution cycle</div>
+                    <div class="task-schedule">
+                        <span>🕓 Daily • Next: Tomorrow 09:00 UTC</span>
+                        <button class="task-complete-btn">Execute Now</button>
+                    </div>
+                </div>
+                <div class="task-item">
+                    <div class="task-header">
+                        <span class="task-title">Federation Security Audit</span>
+                        <span class="task-status">Pending</span>
+                    </div>
+                    <div class="task-description">Comprehensive security analysis of all nodes</div>
+                    <div class="task-schedule">
+                        <span>🕓 Weekly • Next: Sunday 10:00 UTC</span>
+                        <button class="task-complete-btn">Execute Now</button>
+                    </div>
+                </div>
+                <div class="task-item completed">
+                    <div class="task-header">
+                        <span class="task-title">Treasury Reconciliation</span>
+                        <span class="task-status">Completed</span>
+                    </div>
+                    <div class="task-description">Reconcile GDC and MEC token balances</div>
+                    <div class="task-schedule">
+                        <span>✓ Completed • Last: 2 hours ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="add-task-form">
+                <input type="text" id="task-title-input" class="add-task-input" placeholder="Task title...">
+                <input type="text" id="task-desc-input" class="add-task-input" placeholder="Task description...">
+                <input type="text" id="task-schedule-input" class="add-task-input" placeholder="Schedule (e.g., Daily 09:00 UTC, Hourly)...">
+                <button id="add-task-btn" class="add-task-btn">Add Task</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>MSOS Federation Portal • <span class="sovereign">Sovereign Authority: Christopher Macachor Φ669</span></p>
+            <p>Last Updated: <span id="last-updated">April 12, 2026</span> • System Status: <span style="color: var(--success);">OPERATIONAL</span></p>
+        </footer>
+    </div>
+
+    <!-- Push Notification Toggle -->
+    <div class="notification-toggle">
+        <button id="notification-btn" style="position: relative;">
+            <span style="font-size: 1.2em;">🔔</span>
+            <span id="notification-count" class="notification-badge" style="display: none;">0</span>
+        </button>
+    </div>
+
+    <script>
+        // Update timestamp
+        document.getElementById('last-updated').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Gold price animation
+        function animateGoldPrice() {
+            const goldPriceElement = document.getElementById('gold-price');
+            const basePrice = 2347.50;
+            const variation = (Math.random() - 0.5) * 10;
+            const newPrice = (basePrice + variation).toFixed(2);
+            goldPriceElement.textContent = '$' + newPrice;
+        }
+
+        setInterval(animateGoldPrice, 5000);
+
+        // Simulate real-time updates
+        function simulateUpdates() {
+            // Update agents count
+            const agentStats = document.querySelectorAll('.stat-value');
+            agentStats.forEach(stat => {
+                if (stat.textContent.match(/^\d+\.?\d*[KMB]?$/)) {
+                    const currentValue = stat.textContent;
+                    let numericValue = parseFloat(currentValue.replace(/[^0-9.]/g, ''));
+                    if (Math.random() > 0.7) {
+                        const multiplier = currentValue.includes('K') ? 1000 : 
+                                          currentValue.includes('M') ? 1000000 :
+                                          currentValue.includes('B') ? 1000000000 : 1;
+                        const change = Math.floor(Math.random() * 100) * multiplier;
+                        const newValue = numericValue * multiplier + change;
+                        stat.textContent = formatNumber(newValue);
+                    }
+                }
+            });
+
+            // Update coherence
+            const coherenceValues = document.querySelectorAll('.status-item .value');
+            coherenceValues.forEach(val => {
+                if (val.textContent.includes('0.9')) {
+                    const newPhi = (0.96 + (Math.random() - 0.5) * 0.02).toFixed(3);
+                    val.innerHTML = newPhi + ' <span class="trend up">↑ ' + (Math.random() * 3).toFixed(1) + '%</span>';
+                }
+            });
+
+            // Update analytics charts
+            updateAnalyticsCharts();
+        }
+
+        function formatNumber(num) {
+            if (num >= 1000000000) return (num / 1000000000).toFixed(1) + 'B';
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num.toFixed(2);
+        }
+
+        function updateAnalyticsCharts() {
+            // Randomly update chart bar heights
+            const charts = ['agent-chart', 'coherence-chart', 'transaction-chart'];
+            charts.forEach(chartId => {
+                const chart = document.getElementById(chartId);
+                if (chart) {
+                    const bars = chart.querySelectorAll('.chart-bar');
+                    bars.forEach(bar => {
+                        if (Math.random() > 0.8) {
+                            const newHeight = 60 + Math.random() * 35;
+                            bar.style.height = newHeight + '%';
+                            const value = bar.getAttribute('data-value');
+                            if (value.startsWith('0.')) {
+                                bar.setAttribute('data-value', (newHeight / 100).toFixed(2));
+                            } else if (value.startsWith('$')) {
+                                const currentVal = parseFloat(value.replace('$', '').replace('M', ''));
+                                bar.setAttribute('data-value', '$' + (currentVal * (0.9 + Math.random() * 0.2)).toFixed(1) + 'M');
+                            } else {
+                                bar.setAttribute('data-value', Math.round(newHeight) + '%');
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        setInterval(simulateUpdates, 10000);
+
+        // Video upload simulation
+        const uploadSection = document.querySelector('.upload-section');
+        const progressBar = document.querySelector('.upload-progress-bar');
+        const progressText = uploadSection.querySelector('p:last-of-type');
+        let uploadProgress = 0;
+
+        uploadSection.addEventListener('click', () => {
+            if (uploadProgress === 0) {
+                const uploadInterval = setInterval(() => {
+                    uploadProgress += Math.random() * 15;
+                    if (uploadProgress >= 100) {
+                        uploadProgress = 100;
+                        clearInterval(uploadInterval);
+                    }
+                    progressBar.style.width = uploadProgress + '%';
+                    progressText.textContent = Math.floor(uploadProgress) + '% Complete';
+                }, 200);
+            }
+        });
+
+        // Alert notification simulation
+        function addAlert(title, type = 'info') {
+            const alertsList = document.querySelector('.alerts-list');
+            const alertItem = document.createElement('div');
+            alertItem.className = `alert-item ${type}`;
+            alertItem.innerHTML = `
+                <div class="alert-title">${title}</div>
+                <div class="alert-time">Just now</div>
+            `;
+            alertsList.insertBefore(alertItem, alertsList.firstChild);
+            
+            // Keep only last 10 alerts
+            while (alertsList.children.length > 10) {
+                alertsList.removeChild(alertsList.lastChild);
+            }
+        }
+
+        setInterval(() => {
+            const alertTypes = ['info', 'info', 'warning'];
+            const alerts = [
+                '📡 Quantum coherence stabilized at Φ=' + (0.95 + Math.random() * 0.03).toFixed(3),
+                '🤖 New agent created: Federation Explorer v2.0',
+                '💰 Gold pipeline synchronization complete',
+                '⚡ High throughput detected on federation network',
+                '🛡️ Security scan completed: No threats found'
+            ];
+            if (Math.random() > 0.6) {
+                addAlert(alerts[Math.floor(Math.random() * alerts.length)], alertTypes[Math.floor(Math.random() * alertTypes.length)]);
+            }
+        }, 15000);
+
+        // NEW: Agent Communication System
+        const communicationContainer = document.getElementById('communication-container');
+        const messageInput = document.getElementById('message-input');
+        const messageSendBtn = document.getElementById('message-send');
+
+        // Agent names and responses
+        const agents = [
+            { name: 'Coherence Guardian', responses: ['Coherence scan initiated.', 'Φ values within optimal range.', 'Quantum gate verification complete.'] },
+            { name: 'Quantum Architect', responses: ['Architecture deployed successfully.', 'Multiversal bridge established.', 'Quantum circuit optimized.'] },
+            { name: 'Sovereign α Ω', responses: ['Sovereign command acknowledged.', 'Protocol executed with Φ669 clearance.', 'Federation directive authorized.'] },
+            { name: 'Federation Sentinel', responses: ['Security scan complete. No threats found.', 'Federation perimeter secured.', 'Alert system operational.'] }
+        ];
+
+        function addMessage(sender, content, type = 'agent') {
+            const messageElement = document.createElement('div');
+            messageElement.className = `message ${type}`;
+            messageElement.innerHTML = `
+                <div class="message-header">
+                    <span class="message-sender">${sender}</span>
+                    <span class="message-time">Just now</span>
+                </div>
+                <div class="message-content">${content}</div>
+            `;
+            communicationContainer.insertBefore(messageElement, communicationContainer.firstChild);
+            
+            // Keep only last 20 messages
+            while (communicationContainer.children.length > 20) {
+                communicationContainer.removeChild(communicationContainer.lastChild);
+            }
+        }
+
+        messageSendBtn.addEventListener('click', () => {
+            const command = messageInput.value.trim();
+            if (command) {
+                // Add sovereign command
+                addMessage('Sovereign Christopher Φ669', command, 'sovereign');
+                messageInput.value = '';
+
+                // Simulate agent response after 2-5 seconds
+                setTimeout(() => {
+                    const agent = agents[Math.floor(Math.random() * agents.length)];
+                    const response = agent.responses[Math.floor(Math.random() * agent.responses.length)];
+                    addMessage(agent.name, response, 'agent');
+                }, 2000 + Math.random() * 3000);
+            }
+        });
+
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                messageSendBtn.click();
+            }
+        });
+
+        // Auto-generate agent messages periodically
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                const agent = agents[Math.floor(Math.random() * agents.length)];
+                const response = agent.responses[Math.floor(Math.random() * agent.responses.length)];
+                addMessage(agent.name, response, 'agent');
+            }
+        }, 20000);
+
+        // NEW: Task Scheduling System
+        const taskList = document.getElementById('task-list');
+        const taskTitleInput = document.getElementById('task-title-input');
+        const taskDescInput = document.getElementById('task-desc-input');
+        const taskScheduleInput = document.getElementById('task-schedule-input');
+        const addTaskBtn = document.getElementById('add-task-btn');
+
+        function addTask(title, description, schedule) {
+            const taskElement = document.createElement('div');
+            taskElement.className = 'task-item';
+            taskElement.innerHTML = `
+                <div class="task-header">
+                    <span class="task-title">${title}</span>
+                    <span class="task-status">Pending</span>
+                </div>
+                <div class="task-description">${description}</div>
+                <div class="task-schedule">
+                    <span>🕓 ${schedule}</span>
+                    <button class="task-complete-btn">Execute Now</button>
+                </div>
+            `;
+            taskList.insertBefore(taskElement, taskList.firstChild);
+
+            // Add complete button functionality
+            const completeBtn = taskElement.querySelector('.task-complete-btn');
+            completeBtn.addEventListener('click', () => {
+                taskElement.classList.add('completed');
+                const statusBadge = taskElement.querySelector('.task-status');
+                statusBadge.textContent = 'Completed';
+                completeBtn.remove();
+            });
+        }
+
+        addTaskBtn.addEventListener('click', () => {
+            const title = taskTitleInput.value.trim();
+            const description = taskDescInput.value.trim();
+            const schedule = taskScheduleInput.value.trim();
+
+            if (title && description && schedule) {
+                addTask(title, description, schedule);
+                taskTitleInput.value = '';
+                taskDescInput.value = '';
+                taskScheduleInput.value = '';
+            }
+        });
+
+        // Add event listeners to existing task complete buttons
+        document.querySelectorAll('.task-complete-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const taskItem = this.closest('.task-item');
+                taskItem.classList.add('completed');
+                const statusBadge = taskItem.querySelector('.task-status');
+                statusBadge.textContent = 'Completed';
+                this.remove();
+            });
+        });
+
+        // NEW: Push Notification System
+        const notificationBtn = document.getElementById('notification-btn');
+        const notificationCount = document.getElementById('notification-count');
+        let notificationEnabled = false;
+        let unreadCount = 0;
+
+        notificationBtn.addEventListener('click', () => {
+            if (!notificationEnabled) {
+                notificationEnabled = true;
+                notificationBtn.innerHTML = '<span style="font-size: 1.2em;">🔕</span>';
+                addNotification('Push notifications enabled', 'You will receive real-time updates');
+            } else {
+                notificationEnabled = false;
+                notificationBtn.innerHTML = `
+                    <span style="font-size: 1.2em;">🔔</span>
+                    ${unreadCount > 0 ? `<span id="notification-count" class="notification-badge">${unreadCount}</span>` : ''}
+                `;
+            }
+        });
+
+        function addNotification(message, type = 'info') {
+            if (notificationEnabled) {
+                // Show browser notification
+                if ('Notification' in window && Notification.permission === 'granted') {
+                    new Notification('MSOS Federation Portal', {
+                        body: message,
+                        icon: '🌐'
+                    });
+                }
+            }
+
+            // Update unread count
+            unreadCount++;
+            if (!notificationEnabled) {
+                notificationCount.textContent = unreadCount;
+                notificationCount.style.display = 'flex';
+            }
+
+            // Update alert system
+            const alertType = type === 'error' ? 'error' : type === 'warning' ? 'warning' : 'info';
+            const alertTitle = type === 'error' ? '⚠️ ' + message : type === 'warning' ? '⚡ ' + message : '📡 ' + message;
+            addAlert(alertTitle, alertType);
+        }
+
+        // Request notification permission on page load
+        if ('Notification' in window && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+
+        // Auto-generate notifications
+        setInterval(() => {
+            if (Math.random() > 0.8) {
+                const notifications = [
+                    'Quantum coherence threshold reached',
+                    'New federation node detected',
+                    'Gold price updated: $2,347.50/oz',
+                    'Agent evolution cycle complete',
+                    'Security scan all clear'
+                ];
+                addNotification(notifications[Math.floor(Math.random() * notifications.length)], 'info');
+            }
+        }, 30000);
+
+        // Initialize JSON-LD
+        const jsonLdScript = document.createElement('script');
+        jsonLdScript.type = 'application/ld+json';
+        jsonLdScript.textContent = JSON.stringify(schemaData);
+        document.head.appendChild(jsonLdScript);
+    </script>
+</body>
+  </html>
