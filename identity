@@ -1,1 +1,7 @@
-
+identity/
+├── macachor-root.json
+├── macachor-root.json.asc
+├── fingerprint.txt
+├── pgp.asc
+├── metadata.json
+└── README.md
