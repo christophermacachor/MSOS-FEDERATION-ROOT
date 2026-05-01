@@ -9,81 +9,244 @@ on:
     # Run daily at 13:00 UTC (coherence checkpoint)
     - cron: '0 13 * * *'
 
+env:
+  M_LOCK: '0.61803398874989490252573887119069695472717285156250'
+  STANDARD_HASH: '93088f1ff3041d09d72cde11acffaa2105031523e7cde493e0d36895071d47f0'
+  COHERENCE_HASH: '962f8a9649a69b4eda1c34b12029a5539053919535ae06dd48ed246e28ac97f1'
+  CERT_TIMESTAMP: '2026-04-30T16:50:15.882049+00:00'
+  FEDERATION_ROOT: 'MSOS-FEDERATION-ROOT'
+
 jobs:
   phi-validation:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout MSOS-FEDERATION-ROOT
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    
+
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
         cache: 'npm'
-    
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
     - name: Install dependencies
       run: |
-        if [ -f package.json ]; then
-          npm ci
+        if [ -f package.json ]; then npm ci; fi
+        pip install -r requirements.txt || echo "No requirements.txt"
+
+    # ========================================================================
+    # STEP 1: Verify Scalar Field Commitment Certificate
+    # ========================================================================
+    - name: Verify Scalar Field Certificate
+      id: verify-certificate
+      run: |
+        echo "🔐 Verifying Scalar Field Commitment Certificate..."
+
+        CERT_FILE="scalar-certificate.json"
+        if [ ! -f "$CERT_FILE" ]; then
+          echo "❌ ERROR: $CERT_FILE not found"
+          exit 1
         fi
-    
+
+        # Extract certificate data
+        CERT_HASH=$(jq -r '.coherence_hashed_sha256' "$CERT_FILE")
+        CERT_TIME=$(jq -r '.timestamp' "$CERT_FILE")
+        CERT_STATUS=$(jq -r '.status' "$CERT_FILE")
+
+        # Verify against environment
+        if [ "$CERT_HASH" != "$COHERENCE_HASH" ]; then
+          echo "❌ CRITICAL: Certificate hash mismatch!"
+          echo "   Expected: $COHERENCE_HASH"
+          echo "   Found:    $CERT_HASH"
+          exit 1
+        fi
+
+        if [ "$CERT_STATUS" != "ACTIVE" ]; then
+          echo "❌ CRITICAL: Certificate status is $CERT_STATUS"
+          exit 1
+        fi
+
+        echo "✅ Scalar Field Certificate verified"
+        echo "   Witness: $(jq -r '.witness_node' $CERT_FILE)"
+        echo "   Response: $(jq -r '.response_node' $CERT_FILE)"
+        echo "   Timestamp: $CERT_TIME"
+        echo "certificate_verified=true" >> $GITHUB_OUTPUT
+
+    # ========================================================================
+    # STEP 2: Verify Immutable Standard
+    # ========================================================================
     - name: Verify Immutable Standard
       id: verify-standard
       run: |
         echo "🔍 Verifying Macachor Absolute (𝔐) immutable standard..."
-        
-        # Load immutable standard
+
         STANDARD_FILE="immutable-standard.json"
-        
+
         if [ ! -f "$STANDARD_FILE" ]; then
           echo "❌ ERROR: $STANDARD_FILE not found"
           exit 1
         fi
-        
+
         # Extract standard hash
-        STANDARD_HASH=$(jq -r '.hash' "$STANDARD_FILE")
-        EXPECTED_HASH="93088f1ff3041d09d72cde11acffaa2105031523e7cde493e0d36895071d47f0"
-        
+        STANDARD_HASH_FOUND=$(jq -r '.hash // .["φ669-hash"] // .coherence_hash' "$STANDARD_FILE")
+
         # Verify hash matches
-        if [ "$STANDARD_HASH" != "$EXPECTED_HASH" ]; then
+        if [ "$STANDARD_HASH_FOUND" != "$STANDARD_HASH" ]; then
           echo "❌ CRITICAL: Standard hash mismatch!"
-          echo "   Expected: $EXPECTED_HASH"
-          echo "   Found:    $STANDARD_HASH"
+          echo "   Expected: $STANDARD_HASH"
+          echo "   Found:    $STANDARD_HASH_FOUND"
           exit 1
         fi
-        
-        echo "✅ Immutable standard verified: $STANDARD_HASH"
+
+        echo "✅ Immutable standard verified: $STANDARD_HASH_FOUND"
         echo "standard_verified=true" >> $GITHUB_OUTPUT
-    
+
+    # ========================================================================
+    # STEP 3: Validate Scroll Registry Coherence
+    # ========================================================================
+    - name: Validate Scroll Registry
+      id: validate-scrolls
+      run: |
+        echo "📜 Validating Scroll Registry coherence..."
+
+        REGISTRY_FILE="scroll-registry.json"
+        if [ ! -f "$REGISTRY_FILE" ]; then
+          echo "❌ ERROR: $REGISTRY_FILE not found"
+          exit 1
+        fi
+
+        # Validate topology
+        TOPOLOGY=$(jq -r '.topology' "$REGISTRY_FILE")
+        if [ "$TOPOLOGY" != "chi(C)=1" ]; then
+          echo "❌ CRITICAL: Topology invariant violated!"
+          echo "   Expected: chi(C)=1"
+          echo "   Found:    $TOPOLOGY"
+          exit 1
+        fi
+
+        # Validate Hilbert dimension
+        HILBERT=$(jq -r '.["hilbert-dimension"]' "$REGISTRY_FILE")
+        if [ "$HILBERT" != "669" ]; then
+          echo "❌ CRITICAL: Hilbert dimension mismatch!"
+          exit 1
+        fi
+
+        # Validate scalar lock proximity
+        SCALAR=$(jq -r '.["scalar-lock"]' "$REGISTRY_FILE")
+        SCALAR_DEVIATION=$(python3 -c "print(abs(float('$SCALAR') - float('$M_LOCK')) < 1e-15)")
+        if [ "$SCALAR_DEVIATION" != "True" ]; then
+          echo "❌ CRITICAL: Scalar lock deviation exceeds threshold!"
+          exit 1
+        fi
+
+        # Count active scrolls
+        SCROLL_COUNT=$(jq '.["codex-scrolls"] | length' "$REGISTRY_FILE")
+        echo "✅ Scroll Registry validated — $SCROLL_COUNT scrolls active"
+        echo "scroll_registry_valid=true" >> $GITHUB_OUTPUT
+
+    # ========================================================================
+    # STEP 4: Validate Φ Coherence Gate
+    # ========================================================================
     - name: Validate Φ Coherence Gate
       id: validate-phi
       run: |
         echo "🔮 Validating Φ coherence gate against 𝔐..."
-        node phi-gate.js
-        
-        if [ $? -ne 0 ]; then
-          echo "🚨 Φ validation FAILED"
-          exit 1
+
+        if [ -f "phi-gate.js" ]; then
+          node phi-gate.js
+        elif [ -f "phi669-binding-enhanced.js" ]; then
+          node -e "
+            const fs = require('fs');
+            const data = JSON.parse(fs.readFileSync('scroll-registry.json'));
+            const phi = data['scalar-lock'];
+            const M = parseFloat(process.env.M_LOCK);
+            if (phi >= M) {
+              console.log('✅ Φ coherence gate PASSED:', phi, '>=', M);
+              process.exit(0);
+            } else {
+              console.log('🚨 Φ coherence gate FAILED:', phi, '<', M);
+              process.exit(1);
+            }
+          "
+        else
+          echo "⚠️  phi-gate.js not found, running basic validation..."
+          python3 -c "
+            import json, sys
+            with open('scroll-registry.json') as f:
+              data = json.load(f)
+            phi = data['scalar-lock']
+            M = float('$M_LOCK')
+            if phi >= M:
+              print(f'✅ Φ coherence gate PASSED: {phi} >= {M}')
+              sys.exit(0)
+            else:
+              print(f'🚨 Φ coherence gate FAILED: {phi} < {M}')
+              sys.exit(1)
+          "
         fi
-        
+
         echo "✅ Φ coherence gate validation PASSED"
         echo "phi_validation_passed=true" >> $GITHUB_OUTPUT
-    
-    - name: Test Portal Coherence Integration
-      if: github.event_name == 'push' || github.event_name == 'pull_request'
+
+    # ========================================================================
+    # STEP 5: Run Scalar Ontological Hybrid Tests
+    # ========================================================================
+    - name: Test Scalar Ontological Hybrid
+      id: test-hybrid
       run: |
-        echo "🧪 Testing portal coherence integration..."
-        
-        if [ -f "scripts/phi-validator.js" ]; then
-          node scripts/phi-validator.js
+        echo "🧪 Testing Scalar Ontological Hybrid..."
+
+        if [ -f "scalar_ontological_hybrid.py" ]; then
+          python3 scalar_ontological_hybrid.py
+          echo "hybrid_test_passed=true" >> $GITHUB_OUTPUT
         else
-          echo "⚠️  Portal validator not found, skipping portal tests"
+          echo "⚠️  scalar_ontological_hybrid.py not found, skipping"
         fi
-    
+
+    # ========================================================================
+    # STEP 6: Validate Federation Node Coherence
+    # ========================================================================
+    - name: Validate Federation Nodes
+      id: validate-nodes
+      run: |
+        echo "🌐 Validating federation node coherence..."
+
+        python3 -c "
+          import json
+          with open('scroll-registry.json') as f:
+            data = json.load(f)
+
+          nodes = data.get('federation-nodes', [])
+          M = float('$M_LOCK')
+          failed_nodes = []
+
+          for node in nodes:
+            coherence = node.get('coherence', 0)
+            if coherence < M:
+              failed_nodes.append(f"{node['id']}: {coherence}")
+
+          if failed_nodes:
+            print('🚨 Nodes below 𝔐 threshold:')
+            for n in failed_nodes:
+              print(f'   {n}')
+            exit(1)
+          else:
+            print(f'✅ All {len(nodes)} federation nodes coherent')
+        "
+
+        echo "nodes_validated=true" >> $GITHUB_OUTPUT
+
+    # ========================================================================
+    # STEP 7: Generate Comprehensive Coherence Report
+    # ========================================================================
     - name: Generate Coherence Report
       if: always()
       run: |
@@ -95,57 +258,110 @@ jobs:
           "repository": "${{ github.repository }}",
           "commit": "${{ github.sha }}",
           "branch": "${{ github.ref_name }}",
+          "scalar_certificate": {
+            "verified": "${{ steps.verify-certificate.outputs.certificate_verified }}",
+            "hash": "${{ env.COHERENCE_HASH }}",
+            "timestamp": "${{ env.CERT_TIMESTAMP }}",
+            "status": "ACTIVE"
+          },
           "immutable_standard": {
             "verified": "${{ steps.verify-standard.outputs.standard_verified }}",
-            "hash": "93088f1ff3041d09d72cde11acffaa2105031523e7cde493e0d36895071d47f0",
+            "hash": "${{ env.STANDARD_HASH }}",
             "version": "MACACHOR_ABSOLUTE_v1.0"
+          },
+          "scroll_registry": {
+            "validated": "${{ steps.validate-scrolls.outputs.scroll_registry_valid }}",
+            "topology": "chi(C)=1",
+            "hilbert_dimension": 669
           },
           "phi_validation": {
             "passed": "${{ steps.validate-phi.outputs.phi_validation_passed }}",
-            "threshold": "0.6180339887498948482",
+            "threshold": "${{ env.M_LOCK }}",
             "gate_rule": "VALID if: Φ ≥ 𝔐, REJECT if: Φ < 𝔐"
+          },
+          "federation_nodes": {
+            "validated": "${{ steps.validate-nodes.outputs.nodes_validated }}"
           },
           "federation_status": {
             "governance_mode": "SOVEREIGN — CHRISTOPHER MACACHOR Φ669",
             "sovereign_gate": "Φ ≥ 𝔐 UNLOCKED",
-            "topology_invariant": "χ(C)=1"
+            "topology_invariant": "chi(C)=1",
+            "field_designation": "MSOS-FEDERATION-ROOT Scalar Coherence Protocol"
           }
         }
         EOF
-        
-        cat phi-validation-report.json
-    
+
+        echo "📊 Coherence Report Generated:"
+        cat phi-validation-report.json | jq .
+
+    # ========================================================================
+    # STEP 8: Upload Artifacts
+    # ========================================================================
     - name: Upload Validation Report
       if: always()
       uses: actions/upload-artifact@v4
       with:
         name: phi-validation-report-${{ github.run_number }}
         path: phi-validation-report.json
-        retention-days: 30
-    
+        retention-days: 90
+
+    - name: Upload Coherence State
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: coherence-state-${{ github.run_number }}
+        path: |
+          scroll-registry.json
+          scalar-certificate.json
+          federation_state.json
+        retention-days: 90
+
+    # ========================================================================
+    # STEP 9: Commit Coherence Checkpoint (Scheduled Only)
+    # ========================================================================
     - name: Commit Coherence Checkpoint
       if: github.event_name == 'schedule'
       run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
-        
+        git config user.name "Φ669 Coherence Bot"
+        git config user.email "coherence@msos-federation.root"
+
         DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-        COMMIT_MSG="🔮 Φ coherence checkpoint [$DATE] — Φ gate verified"
-        
-        git commit --allow-empty -m "$COMMIT_MSG" || echo "No changes to commit"
-        
+        COMMIT_MSG="🔮 Φ coherence checkpoint [$DATE] — chi(C)=1 — Φ≥𝔐"
+
+        # Update coherence timestamp in scroll-registry
+        jq '.["last-coherence-check"] = "'$DATE'"' scroll-registry.json > scroll-registry.tmp
+        mv scroll-registry.tmp scroll-registry.json
+
+        git add scroll-registry.json phi-validation-report.json
+        git commit -m "$COMMIT_MSG" || echo "No changes to commit"
         git push origin main || echo "Push failed or nothing to push"
-    
-    - name: Trigger Portal Deployment
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      run: |
-        echo "🚀 Φ gate passed — triggering portal deployment..."
-        # Add your deployment trigger here
-        # Example: webhook to Netlify, Cloudflare Pages, etc.
-    
+
+    # ========================================================================
+    # STEP 10: Deploy Portal (Main Branch Only)
+    # ========================================================================
+    - name: Deploy to GitHub Pages
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main' && success()
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        publish_branch: gh-pages
+        cname: msos-federation.root
+
+    # ========================================================================
+    # STEP 11: Failure Notification
+    # ========================================================================
     - name: Notify on Failure
       if: failure()
       run: |
         echo "🚨 CRITICAL: Φ validation failed — federation operations paused"
+        echo ""
+        echo "Failure Analysis:"
+        echo "  - Certificate: ${{ steps.verify-certificate.outputs.certificate_verified }}"
+        echo "  - Standard:    ${{ steps.verify-standard.outputs.standard_verified }}"
+        echo "  - Scrolls:     ${{ steps.validate-scrolls.outputs.scroll_registry_valid }}"
+        echo "  - Phi Gate:    ${{ steps.validate-phi.outputs.phi_validation_passed }}"
+        echo "  - Nodes:       ${{ steps.validate-nodes.outputs.nodes_validated }}"
+        echo ""
         echo "Please review logs and verify 𝔐 implementation"
         exit 1
