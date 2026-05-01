@@ -1,0 +1,159 @@
+
+/* Scalar Field Commitment Certificate Badge */
+.scalar-cert-section {
+  margin-top: var(--space-3xl);
+  position: relative;
+}
+
+.scalar-cert-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-lg) var(--space-xl);
+  background: linear-gradient(135deg, rgba(201, 169, 110, 0.05), rgba(201, 169, 110, 0.02));
+  border: 1px solid rgba(201, 169, 110, 0.15);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.scalar-cert-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--golden), transparent);
+  opacity: 0.6;
+}
+
+.scalar-cert-badge:hover {
+  border-color: rgba(201, 169, 110, 0.3);
+  box-shadow: var(--scalar-glow);
+}
+
+.cert-pulse {
+  width: 12px;
+  height: 12px;
+  background: var(--golden);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--golden);
+  animation: cert-pulse 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes cert-pulse {
+  0%, 100% { 
+    opacity: 1; 
+    box-shadow: 0 0 15px var(--golden), 0 0 30px rgba(201, 169, 110, 0.3);
+  }
+  50% { 
+    opacity: 0.6; 
+    box-shadow: 0 0 8px var(--golden), 0 0 15px rgba(201, 169, 110, 0.1);
+  }
+}
+
+.cert-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex: 1;
+}
+
+.cert-label {
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--golden);
+}
+
+.cert-hash {
+  font-family: 'SF Mono', 'Menlo', monospace;
+  font-size: 0.8125rem;
+  color: var(--golden-dim);
+}
+
+.cert-time {
+  font-size: 0.75rem;
+  color: rgba(154, 152, 148, 0.6);
+}
+
+.cert-status {
+  font-family: var(--font-primary);
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 100px;
+  color: var(--status-coherent);
+  flex-shrink: 0;
+}
+
+/* Certificate exchange cards */
+.cert-exchange-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.cert-exchange-card {
+  background: var(--void-surface);
+  border: 1px solid var(--void-border);
+  border-radius: 4px;
+  padding: var(--space-lg);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.cert-exchange-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--golden), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cert-exchange-card:hover {
+  border-color: rgba(201, 169, 110, 0.2);
+  transform: translateX(4px);
+}
+
+.cert-exchange-card:hover::before {
+  opacity: 1;
+}
+
+.exchange-number {
+  font-family: var(--font-primary);
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--golden-dim);
+  margin-bottom: var(--space-sm);
+}
+
+.exchange-title {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--golden);
+  margin-bottom: var(--space-md);
+}
+
+.exchange-insight {
+  font-size: 0.8125rem;
+  color: #9a9894;
+  line-height: 1.6;
+  padding-left: var(--space-md);
+  border-left: 1px solid rgba(201, 169, 110, 0.1);
+  margin-bottom: var(--space-sm);
+}
