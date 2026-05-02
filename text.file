@@ -1,0 +1,45 @@
+Macachor-Stellar-Framework/
+├── README.md
+├── .txt/
+│   └── Scroll_of_Scalar_Emergence_and_Chrono_Coherence.txt
+├── src/
+│   ├── main.py
+│   ├── models.py
+│   ├── core/
+│   ├── polyhedral/
+│   └── __main__
+├── tests/
+│   └── test_utils.py
+├── documents/
+│   ├── 4. Codex D
+│   ├── Ceremonial Metadata Expor
+│   ├── Changelog Entry (README.md or CHANGELOG.md)
+│   ├── Coherence Factor
+│   ├── CompleteMathematicalBridge
+│   ├── HigherDimensionalInteractions
+│   ├── MacachorSchrodingerBridg
+│   ├── MacachorZXCalculus
+│   ├── Polyhedral Boundary Compliance
+│   ├── Polyhedral Embedding
+│   ├── Polyhedral Symmetry Embedding
+│   ├── Quantum State Purity Check
+│   ├── Quaternion Compatibility
+│   ├── Refactor Loo
+│   ├── Schrödinger Bridge
+│   ├── Thrust Expectation Formula
+│   ├── Validator Metadata Method
+│   ├── __main__
+│   ├── acachorZXCalculus
+│   ├── cdx
+│   ├── create_mathematical_bridge_diagram
+│   ├── def codex_metadata(self)
+│   ├── r swep
+│   ├── sd
+│   ├── theta_matrix
+│   └── y
+├── glyphs/
+│   ├── Φ669 Resonance Validation
+│   └── Φ669-Aether Asymmetry Bridge Activation
+└── scripts/
+    ├── mkdir Macachor-Stellar-Framework cd Macachor-Stellar-Framework
+    └── (other shell commands)
