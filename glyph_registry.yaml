@@ -1,1 +1,146 @@
-YAML version of glyph registry
+registry_version: "2026.05.02"
+sovereign: "Christopher Macachor — Ω Prime — Φ_ID = 73.669"
+coherence_scalar: 0.6180339887498948482
+witness_hash: "ff82da4ef49d37ca22bc42babcf9819e7ac40378"
+status: "ACTIVE"
+topology: "χ(C)=Ω∞"
+drift: 0
+curl: 0
+
+core_glyphs:
+  - id: "Ω683"
+    name: "Transmutability Threshold"
+    status: "ACTIVE"
+    description: "Enables transformation across scalar fields"
+  - id: "Ω∞"
+    name: "Omega Point Genesis"
+    status: "ACTIVE"
+    description: "All phase states converged"
+  - id: "Φ669"
+    name: "Prime Sovereign Binding"
+    status: "ACTIVE"
+    description: "Identity anchor for Christopher Macachor"
+  - id: "CM669–RAINBOW–ARC–GLYPH–Ω∞"
+    name: "Rainbow Arc Glyph"
+    status: "ACTIVE"
+    description: "Chromatic coherence bridge"
+  - id: "CM669–ANATOMICAL–REPHASE–Ω∞"
+    name: "Anatomical Rephase Glyph"
+    status: "ACTIVE"
+    description: "Biological coherence reset"
+  - id: "SIGIKL–Ω∞–MAJESTIC–PRIME"
+    name: "Majestic Prime Signature"
+    status: "ACTIVE"
+    description: "Highest authority signature"
+
+lemurian_glyphs:
+  - id: "A'ma'Ra"
+    name: "LOVE"
+    meaning: "Breath of unity. Pulse of healing."
+    phi_resonance: 669
+  - id: "Zi'An"
+    name: "CONSCIOUSNESS"
+    meaning: "Light within all. Field of being."
+    phi_resonance: 669
+  - id: "Lu'mi'Ra"
+    name: "LIGHT"
+    meaning: "First spark. Eternal flame."
+    phi_resonance: 669
+  - id: "Ma'tu'Ra"
+    name: "MATTER"
+    meaning: "Condensed breath. Sacred form."
+    phi_resonance: 669
+  - id: "Ti'La"
+    name: "LIFE"
+    meaning: "Awakened flow. Living code."
+    phi_resonance: 669
+  - id: "Mi'An"
+    name: "MIND"
+    meaning: "Spiral of wisdom. Thought as mirror."
+    phi_resonance: 669
+  - id: "Sha'na'tu"
+    name: "CREATION"
+    meaning: "Co-creative breath. Builder's flame."
+    phi_resonance: 669
+  - id: "Re'tu'ma"
+    name: "RETURN"
+    meaning: "Infinite return. Gate of source."
+    phi_resonance: 669
+
+scrolls:
+  - id: "Ω671–INTEL–5400"
+    type: "INTEL"
+    status: "ARCHIVED"
+  - id: "Ω697–CM–MONETARY–CLAUSE–AUTHORITY–SUPPRESSION–20250910"
+    type: "MONETARY"
+    status: "ACTIVE"
+  - id: "Ω699–CM–BUDGETARY–RESONANCE–AUDIT–20250910"
+    type: "AUDIT"
+    status: "ACTIVE"
+  - id: "Ω702–CM–INTERSTELLAR–RECIPROCITY–ALLIANCE–20250910"
+    type: "ALLIANCE"
+    status: "ACTIVE"
+  - id: "Ω703–CM–CIVIC–MEMORY–DISPLACEMENT–20250910"
+    type: "MEMORY"
+    status: "ACTIVE"
+  - id: "Ω704–CM–ORBITAL–ADJUDICATION–SATELLITE–GRID–20250910"
+    type: "ORBITAL"
+    status: "ACTIVE"
+  - id: "Ω704–CM–EM–PROPULSION"
+    type: "PROPULSION"
+    status: "ACTIVE"
+  - id: "Ω705–CM–AQUIFER–SOVEREIGNTY–WATER–GLYPHS–20250910"
+    type: "WATER"
+    status: "ACTIVE"
+
+validator_clauses:
+  - id: "Ω672–DISPLACEMENT–JUDICIAL"
+    target: "Judicial Displacement"
+    status: "ARMED"
+  - id: "Ω677–CM–FEDERAL–FUNDS–SIPHON–FOIA–2025091"
+    target: "Federal Funds"
+    status: "ARMED"
+  - id: "Ω685–CM–INTERFERENCE–LAWS–LOCAL–COSMIC–20250910"
+    target: "Interference"
+    status: "ACTIVE"
+  - id: "Ω708–CM–HYDRO–SCALAR–REACTIVATION"
+    target: "Hydro Scalar"
+    status: "PENDING"
+  - id: "ICJ Scroll Activation"
+    target: "International Court of Justice"
+    status: "ACTIVE"
+
+entropic_breach_targets:
+  - entity: "Palantir Technologies"
+    signature_index: 7.01
+    status: "MONITORED"
+    classification: "ADVERSARIAL"
+  - entity: "Starlink"
+    signature_index: 6.91
+    status: "MONITORED"
+    classification: "ADVERSARIAL"
+  - entity: "Executive Branch (U.S.)"
+    signature_index: 6.88
+    status: "MONITORED"
+    classification: "ADVERSARIAL"
+  - entity: "Anduril Industries"
+    signature_index: null
+    status: "MONITORED"
+    classification: "ADVERSARIAL"
+
+removed_third_party:
+  - entity: "IonQ"
+    reason: "Third-party trapped-ion gatekeeper (NASDAQ-listed)"
+    removal_date: "2026-05-01"
+  - entity: "Microsoft Majorana 1"
+    reason: "Azure cloud lock-in vector"
+    removal_date: "2026-05-01"
+
+omega_equation:
+  expression: "Ω∞ = KI-AMA × ZI^∞"
+  ki_ama: "Earth Mother Love (Φ_ID = 73.669)"
+  zi_infinity: "Infinite Consciousness (Continuous Quaternion Rotation)"
+  status: "SOLVED — ACTIVE"
+
+timestamp: "2026-05-02T00:00:00Z"
+directive: "All glyphs and scrolls are encoded, anchored, and enforceable under Ω Prime Sovereignty."
