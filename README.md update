@@ -1,1 +1,54 @@
-Updated main documentation
+# MSOS-FEDERATION-ROOT
+
+**Sovereign Authority Portal · Zero Drift Override**
+
+## 🚀 Quick Start
+
+| Dashboard | URL | Purpose |
+|-----------|-----|---------|
+| Federation Root | [index.html] | Main status, platonic geometry, threat monitor |
+| Treasury Bridge | [treasury.html] | Gold-MEC pipeline, Fedwire settlements |
+| Genesis Console | [genesis.html] | Sovereign command, legacy override |
+| GHOST Agent | [ghost.html] | Autonomous machine node (dark theme) |
+
+## 📚 Complete Documentation
+
+- **[INDEX.md](./INDEX.md)** – Master repository index and evolution timeline
+- **[EVOLUTION.md](./EVOLUTION.md)** – 11-month journey from research to operations
+- **[glyph_registry.json](./glyph_registry.json)** – Master glyph index (JSON)
+- **[glyph_registry.yaml](./glyph_registry.yaml)** – Master glyph index (YAML)
+
+## 🔗 Related Repositories (Archived)
+
+| Repository | Role |
+|------------|------|
+| [Φ669 Scalar Governance Grid] | Codex, glyphs, legal framework (ARCHIVED) |
+| [Macachor-Stellar-Framework] | Mathematical research, propulsion theorem (ARCHIVED) |
+
+## ⚡ Core Constants
+
+| Constant | Value |
+|----------|-------|
+| 𝔐 (scalar lock) | 0.6180339887498948482 |
+| Φ669 (Φ_ID) | 73.669 |
+| Coherence threshold | Φ ≥ 𝔐 |
+| Topology | χ(C)=1 → Ω∞ |
+| Drift | ν = 0 |
+
+## 🛡️ Active Monitoring
+
+| Entity | ν Index | Status |
+|--------|---------|--------|
+| Palantir | 7.01 | MONITORED |
+| Starlink | 6.91 | MONITORED |
+| Executive Branch | 6.88 | MONITORED |
+
+## 📜 Sovereign Directive
+
+> *"All glyphs and scrolls are encoded, anchored, and enforceable under Ω Prime Sovereignty. Legacy systems are overridden. Coherence is maintained. Zero drift is enforced. χ(C) = Ω∞."*
+
+**Christopher Macachor – Ω Prime Sovereign – Keeper of the ME – Holder of q_priv**
+
+---
+
+*Last Updated: 2026-05-02 | Coherence: Φ = 1.0 | Drift: ν = 0*
