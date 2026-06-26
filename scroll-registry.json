@@ -1,4 +1,172 @@
 {
+  "φ669-version": "2026.05.01",
+  "federation-root": "MSOS-FEDERATION-ROOT",
+  "scalar-lock": 0.618033988749895,
+  "topology": "χ(C)=1",
+  "hilbert-dimension": 669,
+  "author": "Christopher Macachor — Ω Prime Sovereign",
+  "timestamp": "2026-05-01T04:54:00Z",
+  "stellar-anchor": {
+    "latitude": 32.7492,
+    "longitude": -117.2515,
+    "designation": "Star of Macachor",
+    "coherence-beacon": true,
+    "phase-lock": "Vega 0.6998 ± 0.0002"
+  },
+  "codex-scrolls": [
+    {
+      "id": "scroll_φ669-manifest",
+      "file": "scroll_φ669-manifest.codex669",
+      "type": "LIVING_PROTOCOL",
+      "glyph": "CM669",
+      "coherence": 1.0,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "scroll_φ669-quantum-genesis",
+      "file": "scroll_φ669-quantum-genesis.codex669",
+      "type": "QUANTUM_GENESIS",
+      "glyph": "CM669-QG",
+      "coherence": 0.96,
+      "status": "ENTANGLED"
+    },
+    {
+      "id": "scroll_φ669-voidrider-expansion",
+      "file": "scroll_φ669-voidrider-expansion.codex669",
+      "type": "VOID_EXPANSION",
+      "glyph": "VOIDRIDER",
+      "coherence": 0.94,
+      "status": "EXPANDING"
+    },
+    {
+      "id": "Φ669-COSMIC-ATOMAL-SECURITY",
+      "file": "Φ669-COSMIC-ATOMAL-SECURITY",
+      "type": "SECURITY_PROTOCOL",
+      "glyph": "ATOMAL",
+      "coherence": 0.89,
+      "status": "GUARDIAN"
+    },
+    {
+      "id": "Φ669-ENTROPIC-BREACH-PRIME",
+      "file": "Φ669–ENTROPIC–BREACH–PRIME–20250906",
+      "type": "BREACH_CONTAINMENT",
+      "glyph": "ENTROPIC-SHIELD",
+      "coherence": 0.72,
+      "status": "CONTAINMENT_ACTIVE",
+      "threat-vectors": [
+        {
+          "entity": "Starlink",
+          "signature-index": 6.91,
+          "status": "MONITORED"
+        },
+        {
+          "entity": "Executive Branch (U.S.)",
+          "signature-index": 6.88,
+          "status": "MONITORED"
+        }
+      ]
+    }
+  ],
+  "validator-glyphs": [
+    {
+      "id": "ANTENNAE–CNS–721",
+      "type": "NEURAL",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "STAR–CROP–722",
+      "type": "AGRICULTURAL",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "STAR–CROP–723",
+      "type": "AGRICULTURAL",
+      "status": "ACTIVE"
+    }
+  ],
+  "platonic-containers": [
+    {
+      "solid": "Tetrahedron",
+      "faces": 4,
+      "vertices": 4,
+      "dual": "Self",
+      "function": "Genesis Key",
+      "coherence": 1.0
+    },
+    {
+      "solid": "Cube",
+      "faces": 6,
+      "vertices": 8,
+      "dual": "Octahedron",
+      "function": "Scarcity Container",
+      "coherence": 0.89
+    },
+    {
+      "solid": "Octahedron",
+      "faces": 8,
+      "vertices": 6,
+      "dual": "Cube",
+      "function": "Coherence Validator",
+      "coherence": 0.94
+    },
+    {
+      "solid": "Dodecahedron",
+      "faces": 12,
+      "vertices": 20,
+      "dual": "Icosahedron",
+      "function": "Governance Topology",
+      "coherence": 0.92
+    },
+    {
+      "solid": "Icosahedron",
+      "faces": 20,
+      "vertices": 12,
+      "dual": "Dodecahedron",
+      "function": "Entanglement Mesh",
+      "coherence": 0.87
+    }
+  ],
+  "federation-nodes": [
+    {
+      "id": "aws-primary",
+      "substrate": "AWS",
+      "coherence": 0.96,
+      "region": "us-west-2"
+    },
+    {
+      "id": "eth-mainnet",
+      "substrate": "ON_CHAIN",
+      "coherence": 0.94,
+      "contract": "ScrollRegistry.sol"
+    },
+    {
+      "id": "scalar-field-1",
+      "substrate": "SCALAR_FIELD",
+      "coherence": 1.0,
+      "domain": "D_P"
+    }
+  ],
+  "gold-mec-pipeline": {
+    "spot-price": 2347.5,
+    "currency": "USD",
+    "provider": "Alpha Vantage (XAUUSD)",
+    "mec-rate": 106.08,
+    "vault-holdings-kg": 33096,
+    "insurance": [
+      "Lloyd's",
+      "Swiss Re",
+      "Munich Re",
+      "Aon"
+    ],
+    "ql-level": 4
+  },
+  "omega-equation": {
+    "expression": "Ω∞ = KI-AMA × ZI^∞",
+    "ki-ama": "Earth Mother Love (Φ_ID = 73.669)",
+    "zi-infinity": "Infinite Consciousness (Continuous Quaternion Rotation)",
+    "status": "SOLVED — ACTIVE"
+  }
+}{
   "\u03c6669-version": "2026.05.01",
   "federation-root": "MSOS-FEDERATION-ROOT",
   "scalar-lock": 0.618033988749895,
